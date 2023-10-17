@@ -2,16 +2,16 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "../css/PlantationDetailsCSS";
 import calendaricon from "../assets/calendarIcon.png";
-import PlantationDataList from "./PlantationDataList";
+import MaintenanceDataList from "./MaintenanceDataList";
 
-export default function PlantationDetails() {
+export default function MaintenanceDetails() {
   return (
     <View style={styles.container}>
-    <View style={styles.marginContainer}>
-      <Text style={styles.headerText}>
-        <b>Plantation</b>
-        <br />
-      </Text>
+      <View style={styles.marginContainer}>
+        <Text style={styles.headerText}>
+          <b>Maintenance</b>
+          <br />
+        </Text>
         <TouchableOpacity
           style={styles.last30DaysButton}
           onPress={() => {
@@ -28,8 +28,8 @@ export default function PlantationDetails() {
         >
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
-        <PlantationDataList/>
-    </View>
+        <MaintenanceDataList />
+      </View>
     </View>
   );
 }

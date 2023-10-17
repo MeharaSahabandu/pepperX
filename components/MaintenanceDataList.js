@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "../css/PlantationDetailsCSS";
 
-export default function PlantationDataList() {
+export default function MaintenanceDataList() {
   return (
     <View>
       <View style={styles.rectangle}>
@@ -13,14 +13,12 @@ export default function PlantationDataList() {
         </Text>
         <View style={styles.separator}></View>
         <Text style={styles.text}>
-          <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+          <Text style={{ color: "#888888", fontSize: 12 }}>Watering</Text>{" "}
           <br />
           LKR 55,000
           <br />
           <br />
-          <Text style={{ color: "#888888", fontSize: 12 }}>
-            Other Expenditure
-          </Text>
+          <Text style={{ color: "#888888", fontSize: 12 }}>Trimming</Text>
           <br />
           LKR 20,000
         </Text>
@@ -36,14 +34,12 @@ export default function PlantationDataList() {
         </Text>
         <View style={styles.separator}></View>
         <Text style={styles.text}>
-          <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+          <Text style={{ color: "#888888", fontSize: 12 }}>Watering</Text>{" "}
           <br />
           LKR 55,000
           <br />
           <br />
-          <Text style={{ color: "#888888", fontSize: 12 }}>
-            Other Expenditure
-          </Text>
+          <Text style={{ color: "#888888", fontSize: 12 }}>Trimming</Text>
           <br />
           LKR 20,000
         </Text>
@@ -59,14 +55,12 @@ export default function PlantationDataList() {
         </Text>
         <View style={styles.separator}></View>
         <Text style={styles.text}>
-          <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+          <Text style={{ color: "#888888", fontSize: 12 }}>Watering</Text>{" "}
           <br />
           LKR 55,000
           <br />
           <br />
-          <Text style={{ color: "#888888", fontSize: 12 }}>
-            Other Expenditure
-          </Text>
+          <Text style={{ color: "#888888", fontSize: 12 }}>Trimming</Text>
           <br />
           LKR 20,000
         </Text>
@@ -87,9 +81,7 @@ export default function PlantationDataList() {
           LKR 55,000
           <br />
           <br />
-          <Text style={{ color: "#888888", fontSize: 12 }}>
-            Other Expenditure
-          </Text>
+          <Text style={{ color: "#888888", fontSize: 12 }}>Trimming</Text>
           <br />
           LKR 20,000
         </Text>
