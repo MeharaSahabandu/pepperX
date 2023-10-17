@@ -1,19 +1,38 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, Modal, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, Modal, TextInput } from "react-native";
 import { styles } from "../css/PlantationDetailsCSS";
-import calendaricon from "../assets/calendarIcon.png";
 import MaintenanceDataList from "./MaintenanceDataList";
+import {collection, addDoc} from "firebase/firestore";
+import { db } from "./config";
 
 export default function MaintenanceDetails() {
   const [isModalVisible, setModalVisible] = useState(false);
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const [input3, setInput3] = useState("");
-
+  const [date, setDate] = useState("");
+  const [zone, setZone] = useState("");
+  const [wages, setWages] = useState("");
+  const [other, setOther] = useState("");
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+  const handleSubmit = () =>{
+    addDoc(collection(db,"maintainEx"), {
+        date:date,
+        zone:zone,
+        wages:wages,
+        other:other
+    }).then(()=>{
+        console.log("Data Submitted");
+        setDate("");
+        setZone("");
+        setWages("");
+        setOther("");
+    }).catch((error)=>{
+        console.log(error);
+    })
+  }
   return (
     <View style={styles.container}>
       <View style={styles.marginContainer}>
@@ -34,38 +53,51 @@ export default function MaintenanceDetails() {
         </TouchableOpacity>
         <MaintenanceDataList />
         <Modal
-          transparent={true}
+          transparent={false}
           animationType="slide"
           visible={isModalVisible}
-          onRequestClose={toggleModal}
+          onRequestClose={() => {}}
+          style={styles.modalM}
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <TouchableOpacity onPress={toggleModal}>
-                <Text style={styles.closeModalButton}>X</Text>
-                <Text style={styles.modalTopic}>
-                  <b>Plantation Expenditure</b>
-                </Text>
-                <br/>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder="Field 1"
-                  value={input1}
-                  onChangeText={(text) => setInput1(text)}
-                /><br/>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder="Field 2"
-                  value={input2}
-                  onChangeText={(text) => setInput2(text)}
-                /><br/>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder="Field 3"
-                  value={input3}
-                  onChangeText={(text) => setInput3(text)}
-                /><br/>
-                <button style={styles.addplantation}>ADD</button>
+              <Text style={styles.closeModalButton} onPress={closeModal}>
+                X
+              </Text>
+              <Text style={styles.modalTopic}>
+                <b>Maintenance Expenditure</b>
+              </Text>
+              <br />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Pick Date"
+                value={date}
+                onChangeText={(text) => setDate(text)}
+              />
+              <br />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Zone"
+                value={zone}
+                onChangeText={(text) => setZone(text)}
+              />
+              <br />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Wages"
+                value={wages}
+                onChangeText={(text) => setWages(text)}
+              />
+              <br />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Other Expenses"
+                value={other}
+                onChangeText={(text) => setOther(text)}
+              />
+              <br />
+              <TouchableOpacity style={styles.addplantation}>
+                <Text style={styles.addbtnM} onPress={handleSubmit}>ADD</Text>
               </TouchableOpacity>
             </View>
           </View>

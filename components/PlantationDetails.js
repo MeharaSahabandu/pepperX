@@ -13,7 +13,7 @@ export default function PlantationDetails() {
         <br />
       </Text>
         <TouchableOpacity
-          style={styles.last30DaysButton}
+          style={styles.last30DaysButtonP}
           onPress={() => {
             // Handle "Last 30 days" button click action here
           }}

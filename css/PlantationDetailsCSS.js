@@ -86,7 +86,15 @@ export const styles = StyleSheet.create({
   },
   last30DaysButton:{
     backgroundColor:"#D9F8EC",
-    height:"5%",
+    height:"10%",
+    width:"30%",
+    borderRadius:6,
+    marginTop:"4%",
+    marginLeft:"1%"
+  },
+  last30DaysButtonP:{
+    backgroundColor:"#D9F8EC",
+    height:"4%",
     width:"30%",
     borderRadius:6,
     marginTop:"4%",
@@ -98,42 +106,51 @@ export const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    justifyContent: "flex-end", 
-    backgroundColor: "transparent",
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.3)", // Semi-transparent background
   },
   modalContent: {
     backgroundColor: "white",
-    height: 350, 
+    height: 450,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    position: "absolute",
+    bottom: 0, // Position at the bottom of the screen
+    left: 0,
+    right: 0,
   },
-  closeModalButton:
-  {
-    marginTop:"3%",
-    marginLeft:"92%",
-    fontSize:21
+  closeModalButton: {
+    marginTop: "3%",
+    marginLeft: "92%",
+    fontSize: 21,
   },
-  modalTopic:{
-    marginLeft:"5%",
-    fontSize:18
+  modalTopic: {
+    marginLeft: "5%",
+    fontSize: 18,
   },
   inputField: {
-    borderBlockColor:"rgba(0, 0, 0, 0.8)",
+    borderBlockColor: "rgba(0, 0, 0, 0.8)",
     borderWidth: 1,
     padding: 10,
     width: "90%",
-    height:50,
+    height: 50,
     marginLeft: "5%",
     borderRadius: 8,
     color: "rgba(0, 0, 0, 0.8)", // 30% black
   },
-  addplantation:{
-    width:"90%",
-    marginLeft:"5%",
-    height:50,
-    border:0,
-    backgroundColor:"#05AF6D",
-    borderRadius:8,
-    color:"white"
-  }
+  addplantation: {
+    width: "90%",
+    marginLeft: "5%",
+    height: 50,
+    border: 0,
+    backgroundColor: "#05AF6D",
+    borderRadius: 8,
+    color: "white",
+  },
+  addbtnM: {
+    marginTop: "5%",
+    color: "white",
+    marginLeft: "50%",
+  },
+
 });
