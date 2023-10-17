@@ -1,14 +1,32 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "../css/PlantationDetailsCSS";
+import calendaricon from "../assets/calendarIcon.png";
 
 export default function PlantationDetails() {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>
         <b>Plantation</b>
+        <br />
       </Text>
       <View style={styles.marginContainer}>
+        <TouchableOpacity
+          style={styles.last30DaysButton}
+          onPress={() => {
+            // Handle "Last 30 days" button click action here
+          }}
+        >
+          <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            // Handle button click action here
+          }}
+        >
+          <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
         <View style={styles.rectangle}>
           <Text style={styles.date}>
             <Text style={{ fontSize: 25 }}>12</Text>

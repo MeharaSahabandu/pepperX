@@ -69,4 +69,31 @@ export const styles = StyleSheet.create({
     backgroundColor: "#B8D8EB",
     borderRadius:6
   },
+  addButton: {
+    backgroundColor: '#05AF6D',
+    width: 40, 
+    height: 40, 
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft:"85%",
+    marginTop:"-12%"
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 40,
+    marginTop:"-25%"
+  },
+  last30DaysButton:{
+    backgroundColor:"#D9F8EC",
+    height:"5%",
+    width:"30%",
+    borderRadius:6,
+    marginTop:"4%"
+  },
+  last30DaysButtonText:{
+    marginTop:"4%",
+    marginLeft:"8%"
+  }
+
 });
