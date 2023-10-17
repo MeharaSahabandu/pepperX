@@ -95,6 +95,45 @@ export const styles = StyleSheet.create({
   last30DaysButtonText:{
     marginTop:"4%",
     marginLeft:"8%"
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end", 
+    backgroundColor: "transparent",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    height: 350, 
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  closeModalButton:
+  {
+    marginTop:"3%",
+    marginLeft:"92%",
+    fontSize:21
+  },
+  modalTopic:{
+    marginLeft:"5%",
+    fontSize:18
+  },
+  inputField: {
+    borderBlockColor:"rgba(0, 0, 0, 0.8)",
+    borderWidth: 1,
+    padding: 10,
+    width: "90%",
+    height:50,
+    marginLeft: "5%",
+    borderRadius: 8,
+    color: "rgba(0, 0, 0, 0.8)", // 30% black
+  },
+  addplantation:{
+    width:"90%",
+    marginLeft:"5%",
+    height:50,
+    border:0,
+    backgroundColor:"#05AF6D",
+    borderRadius:8,
+    color:"white"
   }
-
 });
