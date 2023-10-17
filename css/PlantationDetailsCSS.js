@@ -49,52 +49,47 @@ export const styles = StyleSheet.create({
     marginLeft: 15,
     textAlign: "center",
   },
-  zoneLabel: {
-    marginTop: "3%",
-    marginRight: "3%",
-  },
-  zoneLabelTextA: {
-    backgroundColor: "#F8E3AE",
-    borderRadius:6
-  },
-  zoneLabelTextB: {
-    backgroundColor: "#C9EEBF",
-    borderRadius:6
-  },
-  zoneLabelTextC: {
+  zoneRec: {
+    width: 80,
+    height: 30,
+    alignSelf: "center",
     backgroundColor: "#EBBEB8",
-    borderRadius:6
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginTop: 20,
+    marginBottom: 20,
+    marginRight: 10,
   },
-  zoneLabelTextD: {
-    backgroundColor: "#B8D8EB",
-    borderRadius:6
+  zoneRecText: {
+    color: "black",
+    fontSize: 14,
   },
   addButton: {
-    backgroundColor: '#05AF6D',
-    width: 40, 
-    height: 40, 
+    backgroundColor: "#05AF6D",
+    width: 40,
+    height: 40,
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft:"85%",
-    marginTop:"-12%"
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: "85%",
+    marginTop: "-12%",
   },
   addButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 40,
-    marginTop:"-25%"
+    marginTop: "-25%",
   },
-  last30DaysButton:{
-    backgroundColor:"#D9F8EC",
-    height:"5%",
-    width:"30%",
-    borderRadius:6,
-    marginTop:"4%",
-    marginLeft:"5%"
+  last30DaysButton: {
+    backgroundColor: "#D9F8EC",
+    height: "5%",
+    width: "30%",
+    borderRadius: 6,
+    marginTop: "4%",
+    marginLeft: "5%",
   },
-  last30DaysButtonText:{
-    marginTop:"4%",
-    marginLeft:"8%"
-  }
-
+  last30DaysButtonText: {
+    marginTop: "4%",
+    marginLeft: "8%",
+  },
 });
