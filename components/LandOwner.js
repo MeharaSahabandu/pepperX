@@ -1,35 +1,41 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { styles } from "../css/PlantationDetailsCSS";
-import calendaricon from "../assets/calendarIcon.png";
-import MaintenanceDataList from "./MaintenanceDataList";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { styles } from "../css/LandOwnerStyles";
+import Header from "./Header";
 
-export default function MaintenanceDetails() {
+export default function LandOwner() {
   return (
     <View style={styles.container}>
+      <Header />
+      <Text style={styles.headerText}>All Categories</Text>
+      <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>
-        <Text style={styles.headerText}>
-          <b>Adoooo meka wadaaaa</b>
-          <br />
-        </Text>
-        <TouchableOpacity
-          style={styles.last30DaysButton}
-          onPress={() => {
-            // Handle "Last 30 days" button click action here
-          }}
-        >
-          <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => {
-            // Handle button click action here
-          }}
-        >
-          <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
-        <MaintenanceDataList />
+        <View style={styles.rectangle}>
+          <Image
+            source={require("../assets/HarvestExpense.png")}
+            style={styles.image}
+          />
+          <View style={styles.separator}></View>
+          <Text style={styles.text}>Harvesting<br/>Expenditure</Text>
+        </View>
+        
+        <View style={styles.rectangle}>
+          <Image source={require("../assets/HarvestIncome.png")} style={styles.image} />
+          <View style={styles.separator}></View>
+          <Text style={styles.text}>Harvesting<br/>Income</Text>
+        </View>
+        
       </View>
+      <Image
+        source={require("../assets/Wheat.png")}
+        style={styles.backgroundImage1}
+      />
+      <Image
+        source={require("../assets/Wheat.png")}
+        style={styles.backgroundImage2}
+      />
     </View>
   );
 }
+
+
