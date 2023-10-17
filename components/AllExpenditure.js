@@ -85,7 +85,7 @@ export default function AllExpenditure() {
           </TouchableOpacity>
         </ScrollView>
         {selectedExpenditure === "Plantation" ? (
-          <MaintenanceDataList />
+          <PlantationDataList />
         ) : (
           <HarvestExpenditure />
         )}
