@@ -89,7 +89,8 @@ export const styles = StyleSheet.create({
     height:"5%",
     width:"30%",
     borderRadius:6,
-    marginTop:"4%"
+    marginTop:"4%",
+    marginLeft:"5%"
   },
   last30DaysButtonText:{
     marginTop:"4%",
