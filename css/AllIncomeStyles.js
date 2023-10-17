@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   rectangle: {
     flexDirection: "row",
     height: 140,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "white",
     marginTop: 10,
     borderRadius: 10,
   },
