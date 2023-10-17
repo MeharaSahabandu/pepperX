@@ -13,8 +13,8 @@ export default function LandOwner() {
   };
 
   const handleIncomeBtn = () => {
-    // Navigate to AllIncome
-    navigation.navigate("AllIncome");
+    // Navigate to LandOwnerIncome
+    navigation.navigate("LandOwnerIncome");
   };
 
   return (

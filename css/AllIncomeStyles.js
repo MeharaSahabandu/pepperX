@@ -104,4 +104,99 @@ export const styles = StyleSheet.create({
     borderColor: "#05AF6D",
     backgroundColor: "white",
   },
+  addButton: {
+    backgroundColor: "#05AF6D",
+    width: 40,
+    height: 40,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: "85%",
+    marginTop: "2%",
+  },
+  addButtonText: {
+    color: "#fff",
+    fontSize: 40,
+    marginTop: "-25%",
+  },
+
+  // modal styles start
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black background
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  input: {
+    height: 40,
+    borderColor: "#05AF6D",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingLeft: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    color: "#05AF6D",
+  },
+
+  ModaladdButton: {
+    backgroundColor: "#05AF6D", // Change the background color to your preferred color
+    borderRadius: 5,
+    padding: 10,
+    margin: 5,
+    borderWidth: 1,
+    borderColor: "#05AF6D",
+    color: 'white', // Text color
+    alignItems: 'center',
+  },
+
+  ModalcancelButton: {
+    backgroundColor: "red", // Change the background color to your preferred color
+    borderRadius: 5,
+    padding: 10,
+    margin: 5,
+    borderWidth: 1,
+    borderColor: 'red',
+    color: 'white', // Text color
+    alignItems: 'center', 
+  },
+
+  picker: {
+    height: 40,          // Set the height of the Picker
+    borderColor: "#05AF6D",
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginBottom: 10,   // Add space below the Picker
+  },
+
+  datePicker: {
+    height: 40,          // Set the height of the DatePicker
+    borderColor: "#05AF6D",
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginBottom: 10,   // Add space below the DatePicker
+  }
+
+  // modal styles end
+
 });
