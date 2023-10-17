@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { styles } from "../css/AllExpenditureStyles";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import HarvestExpenditure from "./HarvestExpenditure";
 
 export default function AllExpenditure() {
   const [selectedExpenditure, setSelectedExpenditure] = useState("Plantation");
+
+  const handleExpenSelection = (expenseType) => {
+    setSelectedExpenditure(expenseType);
+  };
 
   return (
     <View style={styles.container}>
@@ -17,7 +22,7 @@ export default function AllExpenditure() {
               styles.rectangleHorizontal,
               selectedExpenditure === "Plantation" && styles.selected,
             ]}
-            onPress={() => handleIncomeSelection("Plantation")}
+            onPress={() => handleExpenSelection("Plantation")}
           >
             <Text
               style={[
@@ -33,7 +38,7 @@ export default function AllExpenditure() {
               styles.rectangleHorizontal,
               selectedExpenditure === "Maintenance" && styles.selected,
             ]}
-            onPress={() => handleIncomeSelection("Maintenance")}
+            onPress={() => handleExpenSelection("Maintenance")}
           >
             <Text
               style={[
@@ -49,7 +54,7 @@ export default function AllExpenditure() {
               styles.rectangleHorizontal,
               selectedExpenditure === "Harvest" && styles.selected,
             ]}
-            onPress={() => handleIncomeSelection("Harvest")}
+            onPress={() => handleExpenSelection("Harvest")}
           >
             <Text
               style={[
@@ -65,7 +70,7 @@ export default function AllExpenditure() {
               styles.rectangleHorizontal,
               selectedExpenditure === "DryingPepper" && styles.selected,
             ]}
-            onPress={() => handleIncomeSelection("DryingPepper")}
+            onPress={() => handleExpenSelection("DryingPepper")}
           >
             <Text
               style={[
@@ -77,6 +82,11 @@ export default function AllExpenditure() {
             </Text>
           </TouchableOpacity>
         </ScrollView>
+        {selectedExpenditure === "Harvest" ? (
+          <HarvestExpenditure />
+        ) : (
+          <HarvestExpenditure />
+        )}
       </View>
     </View>
   );

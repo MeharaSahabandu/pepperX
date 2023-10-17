@@ -92,8 +92,4 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#05AF6D",
   },
-  // qtyRecText: {
-  //   color: "black",
-  //   fontSize: 16,
-  // },
 });

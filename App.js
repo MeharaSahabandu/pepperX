@@ -6,5 +6,5 @@ import PlantationDetails from "./components/PlantationDetails";
 import AllExpenditure from "./components/AllExpenditure";
 
 export default function App() {
-  return <AllIncome />;
+  return <AllExpenditure />;
 }
