@@ -5,7 +5,8 @@ import SupervisorHome from "./components/SupervisorHome";
 import PlantationDetails from "./components/PlantationDetails";
 import AllExpenditure from "./components/AllExpenditure";
 import PlantationDataList from "./components/PlantationDataList";
+import AllZones from "./components/AllZones";
 
 export default function App() {
-  return <AllExpenditure />;
+  return <AllZones />;
 }
