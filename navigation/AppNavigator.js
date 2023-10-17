@@ -11,6 +11,7 @@ import MaintenanceDetails from "../components/MaintenanceDetails";
 import LandOwner from "../components/LandOwner";
 import AllZones from "../components/AllZones";
 import AllExpenditure from "../components/AllExpenditure";
+import BarScreen from "../components/BarScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="BarScreen" component={BarScreen} />
         <Stack.Screen name="All Income" component={AllIncome} />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
         <Stack.Screen name="All Zones" component={AllZones} />
