@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { styles } from "../css/AllIncomeStyles";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import HarvestIncome from "./HarvestIncome";
+import DryingPepperIncome from "./DryingPepperIncome";
 
 export default function AllIncome() {
   const [selectedIncome, setSelectedIncome] = useState("Harvesting");
-  const [incomeList, setIncomeList] = useState([]);
-
-  useEffect(() => {
-    handleIncomeSelection("Harvesting");
-  }, []);
 
   const handleIncomeSelection = (incomeType) => {
-    if (incomeType === "Harvesting") {
-      setIncomeList(["$100", "$150", "$200"]);
-    } else if (incomeType === "Drying Pepper") {
-      setIncomeList(["$50", "$75", "$100"]);
-    }
-
     setSelectedIncome(incomeType);
   };
 
@@ -29,7 +20,7 @@ export default function AllIncome() {
         >
           <TouchableOpacity
             style={[
-              styles.rectangle,
+              styles.rectangleHorizontal,
               selectedIncome === "Harvesting" && styles.selected,
             ]}
             onPress={() => handleIncomeSelection("Harvesting")}
@@ -45,7 +36,7 @@ export default function AllIncome() {
           </TouchableOpacity>
           <TouchableOpacity
             style={[
-              styles.rectangle,
+              styles.rectangleHorizontal,
               selectedIncome === "Drying Pepper" && styles.selected,
             ]}
             onPress={() => handleIncomeSelection("Drying Pepper")}
@@ -60,25 +51,11 @@ export default function AllIncome() {
             </Text>
           </TouchableOpacity>
         </ScrollView>
-
-        <View style={styles.incomeList}>
-          <View style={styles.listRec}>
-            <View style={styles.leftTextContainer}>
-              <Text style={styles.leftTextDay}>12</Text>
-              <Text style={styles.leftTextMonth}>June</Text>
-            </View>
-            <View style={styles.separator}></View>
-            <Text style={styles.rightText}>LKR 55,000</Text>
-            <View style={styles.columnContainer}>
-              <View style={styles.zoneRec}>
-                <Text style={styles.zoneRecText}>Zone A</Text>
-              </View>
-              <View style={styles.qtyRec}>
-                <Text style={styles.qtyRecText}>QTY 30KG</Text>
-              </View>
-            </View>
-          </View>
-        </View>
+        {selectedIncome === "Harvesting" ? (
+          <HarvestIncome />
+        ) : (
+          <DryingPepperIncome />
+        )}
       </View>
     </View>
   );

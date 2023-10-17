@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   rectanglesContainer: {
     flexDirection: "row",
   },
-  rectangle: {
+  rectangleHorizontal: {
     width: 200,
     height: 50,
     justifyContent: "center",
@@ -33,46 +33,39 @@ export const styles = StyleSheet.create({
     color: "white",
   },
   //list of income reactangles
-  listRec: {
+
+  rectangle: {
     flexDirection: "row",
-    height: 150,
+    height: 140,
     backgroundColor: "#F5F5F5",
-    marginTop: 20,
+    marginTop: 10,
     borderRadius: 10,
   },
-  leftTextContainer: {
-    flex: 1,
-    flexDirection: "column",
-    marginLeft: 20,
-    alignSelf: "center",
-    marginRight: -70,
-  },
-  leftTextDay: {
-    color: "black",
-    fontSize: 35,
-  },
-  leftTextMonth: {
-    color: "black",
-    fontSize: 16,
-  },
   separator: {
-    width: 2,
+    width: 1,
     backgroundColor: "#CACACA",
+    marginLeft: 30,
     marginTop: 20,
     marginBottom: 20,
   },
-  rightText: {
-    color: "black",
-    fontSize: 24,
+  text: {
+    color: "000000",
+    fontSize: 18,
     flex: 1,
+    marginLeft: 12,
     alignSelf: "center",
-    marginLeft: 20,
+  },
+  date: {
+    alignSelf: "center",
+    color: "000000",
+    marginLeft: 15,
+    textAlign: "center",
   },
   columnContainer: {
     flexDirection: "column",
   },
   zoneRec: {
-    width: 100,
+    width: 80,
     height: 30,
     alignSelf: "center",
     backgroundColor: "#EBBEB8",
@@ -89,7 +82,7 @@ export const styles = StyleSheet.create({
   },
   qtyRec: {
     width: 85,
-    height: 60,
+    height: 50,
     alignSelf: "center",
     backgroundColor: "white",
     alignItems: "center",
@@ -99,8 +92,8 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#05AF6D",
   },
-  qtyRecText: {
-    color: "black",
-    fontSize: 16,
-  },
+  // qtyRecText: {
+  //   color: "black",
+  //   fontSize: 16,
+  // },
 });
