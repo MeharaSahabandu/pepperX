@@ -5,7 +5,8 @@ import SupervisorHome from "./components/SupervisorHome";
 import PlantationDetails from "./components/PlantationDetails";
 import PlantationDataList from "./components/PlantationDataList";
 import MaintenanceDetails from "./components/MaintenanceDetails";
+import LandOwner from "./components/LandOwner";
 
 export default function App() {
-  return <MaintenanceDetails />;
+  return <LandOwner />;
 }
