@@ -43,10 +43,30 @@ export const styles = StyleSheet.create({
     marginLeft: 12,
     alignSelf: "center",
   },
-  date:{
+  date: {
     alignSelf: "center",
     color: "000000",
     marginLeft: 15,
-    textAlign: "center", 
-  }
+    textAlign: "center",
+  },
+  zoneLabel: {
+    marginTop: "3%",
+    marginRight: "3%",
+  },
+  zoneLabelTextA: {
+    backgroundColor: "#F8E3AE",
+    borderRadius:6
+  },
+  zoneLabelTextB: {
+    backgroundColor: "#C9EEBF",
+    borderRadius:6
+  },
+  zoneLabelTextC: {
+    backgroundColor: "#EBBEB8",
+    borderRadius:6
+  },
+  zoneLabelTextD: {
+    backgroundColor: "#B8D8EB",
+    borderRadius:6
+  },
 });
