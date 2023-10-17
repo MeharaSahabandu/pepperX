@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styles } from "../css/AllIncomeStyles";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import HarvestIncome from "./HarvestIncome";
+import DryingPepperIncome from "./DryingPepperIncome";
 
 export default function AllIncome() {
   const [selectedIncome, setSelectedIncome] = useState("Harvesting");
-  const [incomeList, setIncomeList] = useState([]);
 
   const handleIncomeSelection = (incomeType) => {
-    if (incomeType === "Harvesting") {
-      setIncomeList(["$100", "$150", "$200"]);
-    } else if (incomeType === "Drying Pepper") {
-      setIncomeList(["$50", "$75", "$100"]);
-    }
-
     setSelectedIncome(incomeType);
   };
 
@@ -25,7 +20,7 @@ export default function AllIncome() {
         >
           <TouchableOpacity
             style={[
-              styles.rectangle,
+              styles.rectangleHorizontal,
               selectedIncome === "Harvesting" && styles.selected,
             ]}
             onPress={() => handleIncomeSelection("Harvesting")}
@@ -41,7 +36,7 @@ export default function AllIncome() {
           </TouchableOpacity>
           <TouchableOpacity
             style={[
-              styles.rectangle,
+              styles.rectangleHorizontal,
               selectedIncome === "Drying Pepper" && styles.selected,
             ]}
             onPress={() => handleIncomeSelection("Drying Pepper")}
@@ -56,14 +51,11 @@ export default function AllIncome() {
             </Text>
           </TouchableOpacity>
         </ScrollView>
-
-        <View style={styles.incomeList}>
-          {incomeList.map((income, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text style={styles.listItemText}>{income}</Text>
-            </View>
-          ))}
-        </View>
+        {selectedIncome === "Harvesting" ? (
+          <HarvestIncome />
+        ) : (
+          <DryingPepperIncome />
+        )}
       </View>
     </View>
   );

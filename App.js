@@ -1,11 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import ManagerHome from "./components/ManagerHome";
-import AllIncome from "./components/AllIncome";
-import SupervisorHome from "./components/SupervisorHome";
-import PlantationDetails from "./components/PlantationDetails";
-import PlantationDataList from "./components/PlantationDataList";
-import MaintenanceDetails from "./components/MaintenanceDetails";
+import React from "react";
+import AppNavigator from "./navigation/AppNavigator";
 
 export default function App() {
-  return <MaintenanceDetails />;
+  return (
+    <>
+      <AppNavigator />
+    </>
+  );
 }
