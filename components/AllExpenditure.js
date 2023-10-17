@@ -3,6 +3,7 @@ import { styles } from "../css/AllExpenditureStyles";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import HarvestExpenditure from "./HarvestExpenditure";
 import PlantationDataList from "./PlantationDataList";
+import MaintenanceDataList from "./MaintenanceDataList";
 
 export default function AllExpenditure() {
   const [selectedExpenditure, setSelectedExpenditure] = useState("Plantation");
@@ -84,7 +85,7 @@ export default function AllExpenditure() {
           </TouchableOpacity>
         </ScrollView>
         {selectedExpenditure === "Plantation" ? (
-          <PlantationDataList />
+          <MaintenanceDataList />
         ) : (
           <HarvestExpenditure />
         )}
