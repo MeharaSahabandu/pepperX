@@ -14,18 +14,12 @@ export const styles = StyleSheet.create({
     fontWeight: "480",
     marginBottom: 15,
     marginTop: 50,
-    marginLeft:-130
-  },
-  headerPara: {
-    fontSize: 16,
-    textAlign: "center",
-    color: "#888888",
-    marginBottom: 40,
+    marginLeft: -130,
   },
   rectangle: {
-    flexDirection: "row", // Use row direction for image and text
+    flexDirection: "row",
     height: 140,
-    backgroundColor: "#05AF6D",
+    backgroundColor: "#F5F5F5",
     marginTop: 10,
     borderRadius: 10,
   },
@@ -36,18 +30,23 @@ export const styles = StyleSheet.create({
     marginTop: 25,
   },
   separator: {
-    width: 2, // Reduced separator width
-    backgroundColor: "white",
-    marginLeft: 30, // Adjusted margin for better alignment
+    width: 1,
+    backgroundColor: "#CACACA",
+    marginLeft: 30,
     marginTop: 20,
     marginBottom: 20,
   },
   text: {
-    color: "white",
-    fontWeight: "bold",
+    color: "000000",
     fontSize: 18,
     flex: 1,
-    textAlign: "center", // Center text within the available space
-    alignSelf: "center", // Vertically center text
+    marginLeft: 12,
+    alignSelf: "center",
   },
+  date:{
+    alignSelf: "center",
+    color: "000000",
+    marginLeft: 15,
+    textAlign: "center", 
+  }
 });

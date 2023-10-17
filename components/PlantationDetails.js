@@ -1,26 +1,75 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "../css/PlantationDetailsCSS";
-import Header from "./Header";
 
 export default function PlantationDetails() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Plantation</Text>
-      <Text style={styles.headerPara}>Choose the operation you want to do</Text>
+      <Text style={styles.headerText}>
+        <b>Plantation</b>
+      </Text>
       <View style={styles.marginContainer}>
         <View style={styles.rectangle}>
-          <Image
-            source={require("../assets/plantationMenu.png")}
-            style={styles.image}
-          />
+          <Text style={styles.date}>
+          <Text style={{ fontSize: 25 }}>12</Text>
+          <br/>June</Text>
           <View style={styles.separator}></View>
-          <Text style={styles.text}>Plantation</Text>
+          <Text style={styles.text}>
+            <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+            <br />
+            LKR 55,000
+            <br /><br/>
+            <Text style={{ color: "#888888", fontSize: 12 }}>
+              Other Expenditure
+            </Text>
+            <br />
+            LKR 20,000
+          </Text>
         </View>
         <View style={styles.rectangle}>
-          <Image source={require("../assets/maintenanceMenu.png")} style={styles.image} />
+          <Text style={styles.date}><Text style={{ fontSize: 25 }}>15</Text><br/>June</Text>
           <View style={styles.separator}></View>
-          <Text style={styles.text}>Maintenance</Text>
+          <Text style={styles.text}>
+            <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+            <br />
+            LKR 55,000
+            <br /><br/>
+            <Text style={{ color: "#888888", fontSize: 12 }}>
+              Other Expenditure
+            </Text>
+            <br />
+            LKR 20,000
+          </Text>
+        </View>
+        <View style={styles.rectangle}>
+          <Text style={styles.date}><Text style={{ fontSize: 25 }}>18</Text><br/>June</Text>
+          <View style={styles.separator}></View>
+          <Text style={styles.text}>
+            <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+            <br />
+            LKR 55,000
+            <br /><br/>
+            <Text style={{ color: "#888888", fontSize: 12 }}>
+              Other Expenditure
+            </Text>
+            <br />
+            LKR 20,000
+          </Text>
+        </View>
+        <View style={styles.rectangle}>
+          <Text style={styles.date}><Text style={{ fontSize: 25 }}>18</Text><br/>June</Text>
+          <View style={styles.separator}></View>
+          <Text style={styles.text}>
+            <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+            <br />
+            LKR 55,000
+            <br /><br/>
+            <Text style={{ color: "#888888", fontSize: 12 }}>
+              Other Expenditure
+            </Text>
+            <br />
+            LKR 20,000
+          </Text>
         </View>
       </View>
     </View>
