@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
   marginContainer: {
     marginHorizontal: 20,
   },
-  
 
   headerText: {
     fontSize: 30,
@@ -27,7 +26,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row", // Use row direction for image and text
     height: 140,
     backgroundColor: "#05AF6D",
-    marginTop: 10,
+    marginTop: 20,
     borderRadius: 10,
   },
   image: {
