@@ -4,6 +4,7 @@ import AllIncome from "./components/AllIncome";
 import SupervisorHome from "./components/SupervisorHome";
 import PlantationDetails from "./components/PlantationDetails";
 import AllExpenditure from "./components/AllExpenditure";
+import PlantationDataList from "./components/PlantationDataList";
 
 export default function App() {
   return <AllExpenditure />;
