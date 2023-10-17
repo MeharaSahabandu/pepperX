@@ -32,23 +32,75 @@ export const styles = StyleSheet.create({
   selectedText: {
     color: "white",
   },
-  incomeList: {
-    marginTop: 20,
-    marginHorizontal: 20, // Added marginHorizontal
+  //list of income reactangles
+  listRec: {
     flexDirection: "row",
-    flexWrap: "wrap",
+    height: 150,
+    backgroundColor: "#F5F5F5",
+    marginTop: 20,
+    borderRadius: 10,
   },
-  listItem: {
-    width: "100%",
-    height: 125,
-    backgroundColor: "#05AF6D",
-    justifyContent: "center",
+  leftTextContainer: {
+    flex: 1,
+    flexDirection: "column",
+    marginLeft: 20,
+    alignSelf: "center",
+    marginRight: -70,
+  },
+  leftTextDay: {
+    color: "black",
+    fontSize: 35,
+  },
+  leftTextMonth: {
+    color: "black",
+    fontSize: 16,
+  },
+  separator: {
+    width: 2,
+    backgroundColor: "#CACACA",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  rightText: {
+    color: "black",
+    fontSize: 24,
+    flex: 1,
+    alignSelf: "center",
+    marginLeft: 20,
+  },
+  columnContainer: {
+    flexDirection: "column",
+  },
+  zoneRec: {
+    width: 100,
+    height: 30,
+    alignSelf: "center",
+    backgroundColor: "#EBBEB8",
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
     marginTop: 20,
+    marginBottom: 20,
+    marginRight: 10,
   },
-  listItemText: {
-    color: "white",
-    fontSize: 18,
+  zoneRecText: {
+    color: "black",
+    fontSize: 14,
+  },
+  qtyRec: {
+    width: 85,
+    height: 60,
+    alignSelf: "center",
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginRight: 10,
+    borderWidth: 2,
+    borderColor: "#05AF6D",
+  },
+  qtyRecText: {
+    color: "black",
+    fontSize: 16,
   },
 });

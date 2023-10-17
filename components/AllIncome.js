@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styles } from "../css/AllIncomeStyles";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 
 export default function AllIncome() {
   const [selectedIncome, setSelectedIncome] = useState("Harvesting");
   const [incomeList, setIncomeList] = useState([]);
+
+  useEffect(() => {
+    handleIncomeSelection("Harvesting");
+  }, []);
 
   const handleIncomeSelection = (incomeType) => {
     if (incomeType === "Harvesting") {
@@ -58,11 +62,22 @@ export default function AllIncome() {
         </ScrollView>
 
         <View style={styles.incomeList}>
-          {incomeList.map((income, index) => (
-            <View key={index} style={styles.listItem}>
-              <Text style={styles.listItemText}>{income}</Text>
+          <View style={styles.listRec}>
+            <View style={styles.leftTextContainer}>
+              <Text style={styles.leftTextDay}>12</Text>
+              <Text style={styles.leftTextMonth}>June</Text>
             </View>
-          ))}
+            <View style={styles.separator}></View>
+            <Text style={styles.rightText}>LKR 55,000</Text>
+            <View style={styles.columnContainer}>
+              <View style={styles.zoneRec}>
+                <Text style={styles.zoneRecText}>Zone A</Text>
+              </View>
+              <View style={styles.qtyRec}>
+                <Text style={styles.qtyRecText}>QTY 30KG</Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>
