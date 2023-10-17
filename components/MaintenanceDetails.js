@@ -7,10 +7,11 @@ import MaintenanceDataList from "./MaintenanceDataList";
 export default function MaintenanceDetails() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>
-        <b>Maintenance</b>
-        <br />
-      </Text>
+      <View style={styles.marginContainer}>
+        <Text style={styles.headerText}>
+          <b>Maintenance</b>
+          <br />
+        </Text>
         <TouchableOpacity
           style={styles.last30DaysButton}
           onPress={() => {
@@ -27,7 +28,8 @@ export default function MaintenanceDetails() {
         >
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
-        <MaintenanceDataList/>
+        <MaintenanceDataList />
+      </View>
     </View>
   );
 }

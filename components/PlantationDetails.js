@@ -7,6 +7,7 @@ import PlantationDataList from "./PlantationDataList";
 export default function PlantationDetails() {
   return (
     <View style={styles.container}>
+    <View style={styles.marginContainer}>
       <Text style={styles.headerText}>
         <b>Plantation</b>
         <br />
@@ -28,6 +29,7 @@ export default function PlantationDetails() {
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
         <PlantationDataList/>
+    </View>
     </View>
   );
 }
