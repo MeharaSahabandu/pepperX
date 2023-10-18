@@ -4,6 +4,16 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/PlantationDetailsCSS";
 import { db } from "./config";
 
+// Function to map month number to month name
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "Jan", "Feb", "Mar", "April",
+    "May", "June", "July", "Aug",
+    "Sept", "Oct", "Nov", "Dec"
+  ];
+  return monthNames[monthNumber - 1] || "";
+};
+
 export default function PlantationDataList() {
   const [plantationData, setPlantationData] = useState([]);
 
@@ -50,7 +60,7 @@ export default function PlantationDataList() {
           <Text style={styles.date}>
             <Text style={{ fontSize: 25 }}>{item.date.split('/')[2]}</Text>
             <br />
-            {item.date.split('/')[1]}
+            {getMonthName(parseInt(item.date.split('/')[1]))}
           </Text>
           <View style={styles.separator} />
           <Text style={styles.text}>
