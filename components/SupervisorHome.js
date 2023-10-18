@@ -13,7 +13,7 @@ export default function SupervisorHome() {
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("PlantationDetails")}
+          onPress={() => navigation.navigate("Plantation Details")}
         >
           <View style={styles.rectangle}>
             <Image
@@ -25,7 +25,7 @@ export default function SupervisorHome() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("MaintenanceDetails")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Maintenance Details")}>
           <View style={styles.rectangle}>
             <Image
               source={require("../assets/maintenanceMenu.png")}
