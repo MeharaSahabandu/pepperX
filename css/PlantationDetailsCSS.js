@@ -49,108 +49,47 @@ export const styles = StyleSheet.create({
     marginLeft: 15,
     textAlign: "center",
   },
-  zoneLabel: {
-    marginTop: "3%",
-    marginRight: "3%",
-  },
-  zoneLabelTextA: {
-    backgroundColor: "#F8E3AE",
-    borderRadius:6
-  },
-  zoneLabelTextB: {
-    backgroundColor: "#C9EEBF",
-    borderRadius:6
-  },
-  zoneLabelTextC: {
+  zoneRec: {
+    width: 80,
+    height: 30,
+    alignSelf: "center",
     backgroundColor: "#EBBEB8",
-    borderRadius:6
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginTop: 20,
+    marginBottom: 20,
+    marginRight: 10,
   },
-  zoneLabelTextD: {
-    backgroundColor: "#B8D8EB",
-    borderRadius:6
+  zoneRecText: {
+    color: "black",
+    fontSize: 14,
   },
   addButton: {
-    backgroundColor: '#05AF6D',
-    width: 40, 
-    height: 40, 
+    backgroundColor: "#05AF6D",
+    width: 40,
+    height: 40,
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft:"85%",
-    marginTop:"-12%"
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: "85%",
+    marginTop: "-12%",
   },
   addButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 40,
-    marginTop:"-25%"
+    marginTop: "-25%",
   },
-  last30DaysButton:{
-    backgroundColor:"#D9F8EC",
-    height:"10%",
-    width:"30%",
-    borderRadius:6,
-    marginTop:"4%",
-    marginLeft:"1%"
-  },
-  last30DaysButtonP:{
-    backgroundColor:"#D9F8EC",
-    height:"4%",
-    width:"30%",
-    borderRadius:6,
-    marginTop:"4%",
-    marginLeft:"1%"
-  },
-  last30DaysButtonText:{
-    marginTop:"4%",
-    marginLeft:"8%"
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "flex-end",
-    backgroundColor: "rgba(0, 0, 0, 0.3)", // Semi-transparent background
-  },
-  modalContent: {
-    backgroundColor: "white",
-    height: 450,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    position: "absolute",
-    bottom: 0, // Position at the bottom of the screen
-    left: 0,
-    right: 0,
-  },
-  closeModalButton: {
-    marginTop: "3%",
-    marginLeft: "92%",
-    fontSize: 21,
-  },
-  modalTopic: {
+  last30DaysButton: {
+    backgroundColor: "#D9F8EC",
+    height: "5%",
+    width: "30%",
+    borderRadius: 6,
+    marginTop: "4%",
     marginLeft: "5%",
-    fontSize: 18,
   },
-  inputField: {
-    borderBlockColor: "rgba(0, 0, 0, 0.8)",
-    borderWidth: 1,
-    padding: 10,
-    width: "90%",
-    height: 50,
-    marginLeft: "5%",
-    borderRadius: 8,
-    color: "rgba(0, 0, 0, 0.8)", // 30% black
+  last30DaysButtonText: {
+    marginTop: "4%",
+    marginLeft: "8%",
   },
-  addplantation: {
-    width: "90%",
-    marginLeft: "5%",
-    height: 50,
-    border: 0,
-    backgroundColor: "#05AF6D",
-    borderRadius: 8,
-    color: "white",
-  },
-  addbtnM: {
-    marginTop: "5%",
-    color: "white",
-    marginLeft: "50%",
-  },
-
 });
