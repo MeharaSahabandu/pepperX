@@ -25,4 +25,10 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginTop: 10,
   },
+  amount: {
+    color: "black",
+    fontSize: 24,
+    selfAlign: "center",
+    marginTop: 30,
+  },
 });
