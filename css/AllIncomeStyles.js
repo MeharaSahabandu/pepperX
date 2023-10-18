@@ -142,6 +142,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: "#05AF6D",
   },
   input: {
     height: 40,
@@ -195,8 +196,66 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     marginBottom: 10,   // Add space below the DatePicker
-  }
+  },
 
   // modal styles end
+
+  //date picker modal styles start
+
+  textHeader: {
+    fontSize: 36,
+    marginVertical: 60,
+    color: "#111",
+  },
+  textSubHeader: {
+    fontSize: 25,
+    color: "#111",
+  },
+  inputBtn: {
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#05AF6D",
+    height: 41,
+    paddingLeft: 8,
+    fontSize: 18,
+    justifyContent: "center",
+    marginTop: 1,
+    marginBottom: 20,
+  },
+  submitBtn: {
+    backgroundColor:"#05AF6D",
+    paddingVertical: 22,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
+    paddingVertical: 12,
+    marginVertical: 16,
+  },
+  centeredView: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "#F0FFFF",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+    padding: 35,
+    width: "90%",
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
+    elevation: 5,
+  },
+
+  //date picker modal styles end
+
+
 
 });
