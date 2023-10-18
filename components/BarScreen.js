@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/BarScreenStyles";
 import { db } from "./config";
+import ChartComponent from "./BarGraph";
 
 export default function BarScreen() {
   const [totalPlantEx, setTotalPlantEx] = useState(0);
@@ -106,6 +107,7 @@ export default function BarScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.marginContainer}>
+        <ChartComponent />
         <View style={styles.rectangle}>
           <Text style={[styles.text, { color: "#F2B02F" }]}>
             Plantation Expenditure

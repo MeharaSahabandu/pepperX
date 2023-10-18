@@ -23,8 +23,8 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Finance Balances" component={BarScreen} />
-        <Stack.Screen name="All Zones" component={AllZones} />
         <Stack.Screen name="Bar Graph" component={BarGraph} />
+        <Stack.Screen name="All Zones" component={AllZones} />
 
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
         <Stack.Screen name="All Income" component={AllIncome} />
