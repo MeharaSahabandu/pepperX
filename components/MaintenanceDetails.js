@@ -1,108 +1,215 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Modal, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Modal,
+  TextInput,
+  Picker,
+  Platform,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from "react-native";
+import DatePicker from "react-native-modern-datepicker";
+import { getFormatedDate } from "react-native-modern-datepicker";
+import { collection, query, getDocs, addDoc } from "firebase/firestore";
 import { styles } from "../css/PlantationDetailsCSS";
 import MaintenanceDataList from "./MaintenanceDataList";
-import {collection, addDoc} from "firebase/firestore";
 import { db } from "./config";
 
 export default function MaintenanceDetails() {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [date, setDate] = useState("");
-  const [zone, setZone] = useState("");
-  const [wages, setWages] = useState("");
-  const [other, setOther] = useState("");
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-  const handleSubmit = () =>{
-    addDoc(collection(db,"maintainEx"), {
-        date:date,
-        zone:zone,
-        wages:wages,
-        other:other
-    }).then(()=>{
-        console.log("Data Submitted");
-        setDate("");
-        setZone("");
-        setWages("");
-        setOther("");
-    }).catch((error)=>{
-        console.log(error);
-    })
+  const [isAddPopupVisible, setIsAddPopupVisible] = useState(false);
+  const [wages, setNewWages] = useState("");
+  const [other, setNewOther] = useState("");
+  const [zone, setSelectedZone] = useState("A");
+
+  const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
+  const today = new Date();
+  const startDate = getFormatedDate(
+    today.setDate(today.getDate() + 1),
+    "YYYY/MM/DD"
+  );
+  const [selectedStartDate, setSelectedStartDate] = useState("");
+  const [startedDate, setStartedDate] = useState("12/12/2023");
+
+  function handleChangeStartDate(propDate) {
+    setStartedDate(propDate);
   }
+
+  const handleOnPressStartDate = () => {
+    setOpenStartDatePicker(!openStartDatePicker);
+  };
+
+  const zones = ["A", "B", "C", "D"];
+  const showAddPopup = () => {
+    setIsAddPopupVisible(true);
+  };
+
+  const hideAddPopup = () => {
+    setIsAddPopupVisible(false);
+  };
+  const handleAddExpenditure = () => {
+    const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
+
+    addDoc(collection(db, "maintainEx"), {
+      date: formattedDate, // Use the formatted date
+      wages: wages,
+      zone: zone,
+      other: other,
+    })
+      .then(() => {
+        console.log("Maintenance Data Submitted");
+        setNewWages("");
+        setNewOther("");
+        setSelectedZone("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    hideAddPopup();
+  };
+
+  const getZoneBackgroundColor = (zone) => {
+    switch (zone) {
+      case "A":
+        return styles.zoneRecA;
+      case "B":
+        return styles.zoneRecB;
+      case "C":
+        return styles.zoneRecC;
+      case "D":
+        return styles.zoneRecD;
+      default:
+        return {};
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.marginContainer}>
-        <Text style={styles.headerText}>
-          <b>Maintenance</b>
-          <br />
-        </Text>
-        <TouchableOpacity
-          style={styles.last30DaysButton}
-          onPress={() => {
-            // Handle "Last 30 days" button click action here
-          }}
-        >
-          <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.addButton} onPress={toggleModal}>
+    <>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : ""}
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#fff",
+        }}
+      >
+        <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
-        <MaintenanceDataList />
+
         <Modal
-          transparent={false}
           animationType="slide"
-          visible={isModalVisible}
-          onRequestClose={() => {}}
-          style={styles.modalM}
+          transparent={true}
+          visible={isAddPopupVisible}
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={styles.closeModalButton} onPress={closeModal}>
-                X
-              </Text>
-              <Text style={styles.modalTopic}>
-                <b>Maintenance Expenditure</b>
-              </Text>
-              <br />
+              <Text style={styles.modalTitle}>Add New Entry</Text>
               <TextInput
-                style={styles.inputField}
-                placeholder="Pick Date"
-                value={date}
-                onChangeText={(text) => setDate(text)}
-              />
-              <br />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Zone"
-                value={zone}
-                onChangeText={(text) => setZone(text)}
-              />
-              <br />
-              <TextInput
-                style={styles.inputField}
+                style={styles.input}
                 placeholder="Wages"
+                keyboardType="numeric"
                 value={wages}
-                onChangeText={(text) => setWages(text)}
+                onChangeText={(text) => setNewWages(text)}
               />
-              <br />
+              <Picker
+                selectedValue={zone}
+                placeholder="Select Zone"
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedZone(itemValue)
+                }
+                style={styles.picker}
+              >
+                {zones.map((zone) => (
+                  <Picker.Item key={zone} label={zone} value={zone} />
+                ))}
+              </Picker>
               <TextInput
-                style={styles.inputField}
-                placeholder="Other Expenses"
+                style={styles.input}
+                placeholder="Other Expenditures"
+                keyboardType="numeric"
                 value={other}
-                onChangeText={(text) => setOther(text)}
+                onChangeText={(text) => setNewOther(text)}
               />
-              <br />
-              <TouchableOpacity style={styles.addplantation}>
-                <Text style={styles.addbtnM} onPress={handleSubmit}>ADD</Text>
+              <View>
+                <TouchableOpacity
+                  style={styles.inputBtn}
+                  onPress={handleOnPressStartDate}
+                >
+                  <Text placeholder="Select Date">{selectedStartDate}</Text>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity
+                style={styles.ModaladdButton}
+                onPress={handleAddExpenditure}
+              >
+                <Text style={{ color: "white" }}>Add</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.ModalcancelButton}
+                onPress={hideAddPopup}
+              >
+                <Text style={{ color: "white" }}>Cancel</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-      </View>
-    </View>
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={openStartDatePicker}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <DatePicker
+                mode="calendar"
+                minimumDate={startDate}
+                selected={startedDate}
+                onDateChanged={handleChangeStartDate}
+                onSelectedChange={(date) => setSelectedStartDate(date)}
+                options={{
+                  backgroundColor: "#F0FFFF",
+                  textHeaderColor: "#05AF6D",
+                  textDefaultColor: "#05AF6D",
+                  selectedTextColor: "#FFF",
+                  mainColor: "#05AF6D",
+                  textSecondaryColor: "#FFFFFF",
+                  borderColor: "rgba(122, 146, 165, 0.1)",
+                }}
+              />
+
+              <TouchableOpacity onPress={handleOnPressStartDate}>
+                <Text style={{ color: "#05AF6D" }}>Done</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+
+        <View style={styles.container}>
+          <View style={styles.marginContainer}>
+            <Text style={styles.headerText}>
+              <b>Maintenance</b>
+              <br />
+            </Text>
+            <TouchableOpacity
+              style={styles.last30DaysButton}
+              onPress={() => {
+                // Handle "Last 30 days" button click action here
+              }}
+            >
+              <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
+              <Text style={styles.addButtonText}>+</Text>
+            </TouchableOpacity>
+            <MaintenanceDataList />
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </>
   );
 }

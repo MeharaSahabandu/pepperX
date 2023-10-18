@@ -52,21 +52,23 @@ export default function PlantationDetails() {
   };
 
   const handleAddExpenditure = () => {
-    // Perform the logic to add a new entry to the database here
-    // After adding, hide the popup
-    addDoc(collection(db,"plantationEx"), {
-      wages:wages,
-      zone:zone,
-      otherEx:otherEx
+    const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
+
+    addDoc(collection(db, "plantationEx"), {
+      date: formattedDate, // Use the formatted date
+      wages: wages,
+      zone: zone,
+      otherEx: otherEx,
     })
-    .then(()=>{
-      console.log("Plantation Data Submitted");
-      setNewWages("");
-      setNewOther("");
-      setSelectedZone("");
-    }). catch((error)=>{
-      console.log(error);
-    });
+      .then(() => {
+        console.log("Plantation Data Submitted");
+        setNewWages("");
+        setNewOther("");
+        setSelectedZone("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     hideAddPopup();
   };
 
@@ -204,16 +206,12 @@ export default function PlantationDetails() {
             >
               <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.addButton}
-              onPress={showAddPopup}
-            >
+            <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
             <PlantationDataList />
           </View>
         </View>
-
       </KeyboardAvoidingView>
     </>
   );
