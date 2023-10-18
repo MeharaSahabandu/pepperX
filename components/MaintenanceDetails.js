@@ -127,7 +127,6 @@ export default function MaintenanceDetails() {
               >
                 <Text style={{ color: "white" }}>Add</Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 style={styles.ModalcancelButton}
                 onPress={hideAddPopup}
