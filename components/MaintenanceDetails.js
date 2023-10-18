@@ -71,23 +71,6 @@ export default function MaintenanceDetails() {
       });
     hideAddPopup();
   };
-  
-
-  const getZoneBackgroundColor = (zone) => {
-    switch (zone) {
-      case "A":
-        return styles.zoneRecA;
-      case "B":
-        return styles.zoneRecB;
-      case "C":
-        return styles.zoneRecC;
-      case "D":
-        return styles.zoneRecD;
-      default:
-        return {};
-    }
-  };
-
   return (
     <>
       <KeyboardAvoidingView
