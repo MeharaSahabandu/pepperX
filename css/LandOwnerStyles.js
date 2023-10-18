@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     textAlign: "center",
-    fontWeight: "480",
+    fontWeight: "400",
     marginBottom: 15,
     marginTop: 30,
   },
