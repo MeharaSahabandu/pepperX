@@ -7,24 +7,42 @@ export default function BarScreen() {
     <View style={styles.container}>
       <View style={styles.marginContainer}>
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 1</Text>
+          <Text style={[styles.text, { color: "#F2B02F" }]}>
+            Plantation Expenditure
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 2</Text>
+          <Text style={[styles.text, { color: "#05AF6D" }]}>
+            Driying Pepper Income
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
 
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 3</Text>
+          <Text style={[styles.text, { color: "#05AF6D" }]}>
+            Harvesting Income
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 4</Text>
+          <Text style={[styles.text, { color: "#F2B02F" }]}>
+            Maintenance Expenditure
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
 
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 5</Text>
+          <Text style={[styles.text, { color: "#F2B02F" }]}>
+            Harvesting Expenditure
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
         <View style={styles.rectangle}>
-          <Text style={styles.text}>Rectangle 6</Text>
+          <Text style={[styles.text, { color: "#F2B02F" }]}>
+            Driying Pepper Expenditure
+          </Text>
+          <View style={styles.horizontalLine} />
         </View>
       </View>
     </View>
