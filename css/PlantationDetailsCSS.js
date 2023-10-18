@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   rectangle: {
     flexDirection: "row",
     height: 140,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "white",
     marginTop: 10,
     borderRadius: 10,
   },
@@ -91,5 +91,21 @@ export const styles = StyleSheet.create({
   last30DaysButtonText: {
     marginTop: "4%",
     marginLeft: "8%",
+  },
+  zoneRecA: {
+    backgroundColor: "#EBBEB8", // Zone A background color
+  },
+  zoneRecB: {
+    backgroundColor: "#C9EEBF", // Zone B background color
+  },
+  zoneRecC: {
+    backgroundColor: "#F8E3AE", // Zone C background color
+  },
+  zoneRecD: {
+    backgroundColor: "#B8D8EB", // Zone D background color
+  },
+  zoneRecText: {
+    color: "black",
+    fontSize: 14,
   },
 });
