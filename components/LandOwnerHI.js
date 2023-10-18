@@ -11,8 +11,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
 } from "react-native";
-// import DatePicker from 'react-native-date-picker';
-// import ModalDateTime from 'react-native-modal-datetime-picker';
 import DatePicker from "react-native-modern-datepicker";
 import { getFormatedDate } from "react-native-modern-datepicker";
 import { collection, query, getDocs, addDoc } from "firebase/firestore";
