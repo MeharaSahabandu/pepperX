@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import DatePicker from "react-native-modern-datepicker";
 import { getFormatedDate } from "react-native-modern-datepicker";
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, addDoc } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
 
@@ -50,13 +50,50 @@ export default function LandOwnerHI() {
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
+  
+  const handleAddIncome = async () => {
+    // Parse income and qty as numbers
+    const parsedIncome = parseFloat(newIncome);
+    const parsedQty = parseInt(newQty, 10); // Assuming it's an integer, use parseFloat if it's a decimal.
+  
+    if (isNaN(parsedIncome) || isNaN(parsedQty)) {
+      console.error("Income and Quantity must be valid numbers.");
+      return; // Exit the function if parsing fails.
+    }
+  
+    // Create a new object representing the data you want to add
+    const newItem = {
+      income: parsedIncome, // Use the parsed income value
+      zone: selectedZone,
+      qty: parsedQty, // Use the parsed qty value
+      date: selectedStartDate,
+    };
+  
+    try {
+      // Add the new item to the 'harvestIncome' collection
+      const docRef = await addDoc(collection(db, "harvestIncome"), newItem);
+  
+      // Log the ID of the newly created document
+      console.log("Document written with ID: ", docRef.id);
+  
+      // Clear the input fields or reset your state as needed
+      setNewIncome("");
+      setSelectedZone("");
+      setNewQty("");
+      setSelectedStartDate("");
 
-  const handleAddIncome = () => {
-    // Perform the logic to add a new entry to the database here
-
-    // After adding, hide the popup
-    hideAddPopup();
+      fetchIncomeData();
+  
+      // Hide the popup
+      hideAddPopup();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   };
+  
+  
+  
+
 
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
@@ -73,7 +110,7 @@ export default function LandOwnerHI() {
     }
   };
 
-  useEffect(() => {
+  
     // Fetch data from the 'harvestIncome' collection
     const fetchIncomeData = async () => {
       const q = query(collection(db, "harvestIncome"));
@@ -92,8 +129,11 @@ export default function LandOwnerHI() {
       }
     };
 
-    fetchIncomeData();
-  }, []);
+    useEffect(() => {
+        fetchIncomeData();
+        }
+    , []);
+
 
   return (
     <>
@@ -109,41 +149,41 @@ export default function LandOwnerHI() {
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={isAddPopupVisible}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>Add New Entry</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Income"
-                keyboardType="numeric"
-                value={newIncome}
-                onChangeText={(text) => setNewIncome(text)}
-              />
-              <Picker
-                selectedValue={selectedZone}
-                placeholder="Select Zone"
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedZone(itemValue)
-                }
-                style={styles.picker}
-              >
-                {zones.map((zone) => (
-                  <Picker.Item key={zone} label={zone} value={zone} />
-                ))}
-              </Picker>
-              <TextInput
-                style={styles.input}
-                placeholder="Quantity"
-                keyboardType="numeric"
-                value={newQty}
-                onChangeText={(text) => setNewQty(text)}
-              />
-              <View>
+        
+
+    <Modal
+    animationType="slide"
+    transparent={true}
+    visible={isAddPopupVisible}
+    >
+    <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
+        <Text style={styles.modalTitle}>Add New Income</Text>
+        <TextInput
+            style={styles.input}
+            placeholder="Income"
+            keyboardType="numeric"
+            value={newIncome}
+            onChangeText={(text) => setNewIncome(text)}
+        />
+        <Picker
+            selectedValue={selectedZone}
+            placeholder="Select Zone"
+            onValueChange={(itemValue, itemIndex) => setSelectedZone(itemValue)}
+            style={styles.picker}
+            >
+            {zones.map((zone) => (
+                <Picker.Item key={zone} label={zone} value={zone} />
+            ))}
+        </Picker>
+        <TextInput
+            style={styles.input}
+            placeholder="Quantity"
+            keyboardType="numeric"
+            value={newQty}
+            onChangeText={(text) => setNewQty(text)}
+        />
+        <View>
                 <TouchableOpacity
                   style={styles.inputBtn}
                   onPress={handleOnPressStartDate}
