@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   bottomRectangle: {
     width: 320,
     height: 120,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "white",
     alignSelf: "center",
     borderRadius: 10,
     marginBottom: 20,
