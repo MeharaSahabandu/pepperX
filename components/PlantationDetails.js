@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
-  Picker,
   Platform,
   StyleSheet,
   KeyboardAvoidingView,
 } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import DatePicker from "react-native-modern-datepicker";
 import { getFormatedDate } from "react-native-modern-datepicker";
 import { collection, query, getDocs, addDoc } from "firebase/firestore";
