@@ -21,8 +21,7 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LandOwner">
-        <Stack.Screen name="BarScreen" component={BarScreen} />
-        <Stack.Screen name="All Income" component={AllIncome} />
+       
      
       <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
       <Stack.Screen name="Plantation Details" component={PlantationDetails} />
