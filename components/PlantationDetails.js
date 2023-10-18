@@ -53,12 +53,14 @@ export default function PlantationDetails() {
 
   const handleAddExpenditure = () => {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
-
+    const parsedWages = parseInt(wages, 10); // Convert wages to an integer
+    const parsedOther = parseInt(otherEx, 10); // Convert other to an integer
+  
     addDoc(collection(db, "plantationEx"), {
-      date: formattedDate, // Use the formatted date
-      wages: wages,
+      date: formattedDate,
+      wages: parsedWages, // Send wages as an integer
       zone: zone,
-      otherEx: otherEx,
+      otherEx: parsedOther, // Send other as an integer
     })
       .then(() => {
         console.log("Plantation Data Submitted");

@@ -51,12 +51,14 @@ export default function MaintenanceDetails() {
   };
   const handleAddExpenditure = () => {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
-
+    const parsedWages = parseInt(wages, 10); // Convert wages to an integer
+    const parsedOther = parseInt(other, 10); // Convert other to an integer
+  
     addDoc(collection(db, "maintainEx"), {
-      date: formattedDate, // Use the formatted date
-      wages: wages,
+      date: formattedDate,
+      wages: parsedWages, // Send wages as an integer
       zone: zone,
-      other: other,
+      other: parsedOther, // Send other as an integer
     })
       .then(() => {
         console.log("Maintenance Data Submitted");
@@ -69,6 +71,7 @@ export default function MaintenanceDetails() {
       });
     hideAddPopup();
   };
+  
 
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
