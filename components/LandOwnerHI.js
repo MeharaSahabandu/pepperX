@@ -21,12 +21,10 @@ import { db } from "./config";
 
 export default function LandOwnerHI() {
   const [incomeData, setIncomeData] = useState([]);
-
   const [isAddPopupVisible, setIsAddPopupVisible] = useState(false);
   const [newIncome, setNewIncome] = useState("");
   const [newQty, setNewQty] = useState("");
   const [selectedZone, setSelectedZone] = useState("A"); // Default value
-  //   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
   const today = new Date();

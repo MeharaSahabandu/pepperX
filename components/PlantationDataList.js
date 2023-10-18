@@ -4,19 +4,29 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/PlantationDetailsCSS";
 import { db } from "./config";
 
+// Function to map month number to month name
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "Jan", "Feb", "Mar", "April",
+    "May", "June", "July", "Aug",
+    "Sept", "Oct", "Nov", "Dec"
+  ];
+  return monthNames[monthNumber - 1] || "";
+};
+
 export default function PlantationDataList() {
   const [plantationData, setPlantationData] = useState([]);
 
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
       case "A":
-        return styles.zoneRecA; // Define the style for Zone A background color
+        return styles.zoneRecA;
       case "B":
-        return styles.zoneRecB; // Define the style for Zone B background color
+        return styles.zoneRecB;
       case "C":
-        return styles.zoneRecC; // Define the style for Zone C background color
+        return styles.zoneRecC;
       case "D":
-        return styles.zoneRecD; // Define the style for Zone D background color
+        return styles.zoneRecD;
       default:
         return {};
     }
@@ -30,8 +40,8 @@ export default function PlantationDataList() {
 
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { wages, otherEx, zone } = doc.data();
-          data.push({ wages, otherEx, zone });
+          const { wages, otherEx, zone, date } = doc.data();
+          data.push({ wages, otherEx, zone, date });
         });
 
         setPlantationData(data);
@@ -48,9 +58,9 @@ export default function PlantationDataList() {
       {plantationData.map((item, index) => (
         <View key={index} style={styles.rectangle}>
           <Text style={styles.date}>
-            <Text style={{ fontSize: 25 }}>12</Text>
+            <Text style={{ fontSize: 25 }}>{item.date.split('/')[2]}</Text>
             <br />
-            June
+            {getMonthName(parseInt(item.date.split('/')[1]))}
           </Text>
           <View style={styles.separator} />
           <Text style={styles.text}>
