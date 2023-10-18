@@ -4,33 +4,33 @@ import { View, Text, ScrollView } from "react-native";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "./config";
 
-export default function DryingPepperIncome() {
-  const [incomeData, setIncomeData] = useState([]);
+export default function DryPepperEx() {
+  const [drypepperEx, setDrypepperEx] = useState([]);
 
   useEffect(() => {
-    const fetchIncomeData = async () => {
-      const q = query(collection(db, "machineOperations"));
+    const fetchDrypepperEx = async () => {
+      const q = query(collection(db, "dryPepperEx"));
       try {
         const querySnapshot = await getDocs(q);
 
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { income, qty } = doc.data();
-          data.push({ income, qty });
+          const { expense } = doc.data();
+          data.push({ expense });
         });
 
-        setIncomeData(data);
+        setDrypepperEx(data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
 
-    fetchIncomeData();
+    fetchDrypepperEx();
   }, []);
 
   return (
     <ScrollView>
-      {incomeData.map((item, index) => (
+      {drypepperEx.map((item, index) => (
         <View key={index} style={styles.rectangle}>
           <Text style={styles.date}>
             <Text style={{ fontSize: 25 }}>12</Text>
@@ -40,18 +40,13 @@ export default function DryingPepperIncome() {
           <View style={styles.separator} />
           <Text style={styles.text}>
             <Text style={{ color: "#888888", fontSize: 14 }}>
-              Income Generated
+              Expense Incurred
             </Text>
             {"\n"}
             <Text style={{ color: "black", fontSize: 24 }}>
-              LKR {item.income}
+              LKR {item.expense}
             </Text>
           </Text>
-          <View style={styles.columnContainer}>
-            <View style={[styles.qtyRec, { marginTop: 50 }]}>
-              <Text style={styles.qtyRecText}>QTY {item.qty} KG</Text>
-            </View>
-          </View>
         </View>
       ))}
     </ScrollView>

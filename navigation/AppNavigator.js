@@ -23,25 +23,27 @@ function AppNavigator() {
       <Stack.Navigator initialRouteName="LandOwner">
         <Stack.Screen name="BarScreen" component={BarScreen} />
         <Stack.Screen name="All Income" component={AllIncome} />
+     
+      <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
+      <Stack.Screen name="Plantation Details" component={PlantationDetails} />
+      <Stack.Screen
+          name="Maintenance Details"
+          component={MaintenanceDetails}
+        />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
+        <Stack.Screen name="All Income" component={AllIncome} />
+        <Stack.Screen name="BarScreen" component={BarScreen} />
         <Stack.Screen name="All Zones" component={AllZones} />
-
         <Stack.Screen name="LandOwner" component={LandOwner} />
         <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
         <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
 
         <Stack.Screen name="ManagerHome" component={ManagerHome} />
-
-        <Stack.Screen name="SupervisorHome" component={SupervisorHome} />
-        <Stack.Screen name="PlantationDetails" component={PlantationDetails} />
         <Stack.Screen
           name="PlantationDataList"
           component={PlantationDataList}
         />
-        <Stack.Screen
-          name="MaintenanceDetails"
-          component={MaintenanceDetails}
-        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
