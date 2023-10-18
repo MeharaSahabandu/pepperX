@@ -19,11 +19,12 @@ import { collection, query, getDocs, addDoc } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
 
-export default function LandOwnerHI() {
-  const [incomeData, setIncomeData] = useState([]);
+export default function LandOwnerHE() {
+  const [expenseData, setExpenseData] = useState([]);
 
   const [isAddPopupVisible, setIsAddPopupVisible] = useState(false);
-  const [newIncome, setNewIncome] = useState("");
+  const [newExpense, setNewExpense] = useState("");
+  const [newWages, setNewWages] = useState("");
   const [newQty, setNewQty] = useState("");
   const [selectedZone, setSelectedZone] = useState('A'); // Default value
 //   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -57,39 +58,71 @@ const handleOnPressStartDate = () => {
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
+
   
-  const handleAddIncome = async () => {
+    // Fetch data from the 'harvestIncome' collection
+    const fetchExpenseData = async () => {
+      const q = query(collection(db, "harvestEx"));
+      try {
+        const querySnapshot = await getDocs(q);
+
+        const data = [];
+        querySnapshot.forEach((doc) => {
+          const { expense, wages , zone, qty } = doc.data();
+          data.push({ expense, wages , zone, qty });
+        });
+
+        setExpenseData(data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    useEffect(() => {
+        // Fetch data from the 'harvestIncome' collection
+        fetchExpenseData(); // Fetch data initially
+    
+        // ... other code ...
+    
+      }, []);
+
+
+  
+  const handleAddExpense = async () => {
     // Parse income and qty as numbers
-    const parsedIncome = parseFloat(newIncome);
+    const parsedExpense = parseFloat(newExpense);
+    const parsedWages = parseFloat(newWages);
     const parsedQty = parseInt(newQty, 10); // Assuming it's an integer, use parseFloat if it's a decimal.
   
-    if (isNaN(parsedIncome) || isNaN(parsedQty)) {
-      console.error("Income and Quantity must be valid numbers.");
+    if (isNaN(parsedExpense) || isNaN(parsedQty)) {
+      console.error("Expense and Quantity must be valid numbers.");
       return; // Exit the function if parsing fails.
     }
   
     // Create a new object representing the data you want to add
     const newItem = {
-      income: parsedIncome, // Use the parsed income value
+      expense: parsedExpense, // Use the parsed Expense value
       zone: selectedZone,
       qty: parsedQty, // Use the parsed qty value
+      wages: parsedWages,
       date: selectedStartDate,
     };
   
     try {
-      // Add the new item to the 'harvestIncome' collection
-      const docRef = await addDoc(collection(db, "harvestIncome"), newItem);
+      // Add the new item to the 'harvestExpense' collection
+      const docRef = await addDoc(collection(db, "harvestEx"), newItem);
   
       // Log the ID of the newly created document
       console.log("Document written with ID: ", docRef.id);
   
       // Clear the input fields or reset your state as needed
-      setNewIncome("");
+      setNewExpense("");
       setSelectedZone("");
       setNewQty("");
+      setNewWages("");
       setSelectedStartDate("");
 
-      fetchIncomeData();
+      fetchExpenseData(); // Call the function to fetch data again
   
       // Hide the popup
       hideAddPopup();
@@ -118,29 +151,6 @@ const handleOnPressStartDate = () => {
   };
 
   
-    // Fetch data from the 'harvestIncome' collection
-    const fetchIncomeData = async () => {
-      const q = query(collection(db, "harvestIncome"));
-      try {
-        const querySnapshot = await getDocs(q);
-
-        const data = [];
-        querySnapshot.forEach((doc) => {
-          const { income, zone, qty } = doc.data();
-          data.push({ income, zone, qty });
-        });
-
-        setIncomeData(data);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    useEffect(() => {
-        fetchIncomeData();
-        }
-    , []);
-
 
   return (
     <>
@@ -163,13 +173,20 @@ const handleOnPressStartDate = () => {
     >
     <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-        <Text style={styles.modalTitle}>Add New Income</Text>
+        <Text style={styles.modalTitle}>Add New Expense</Text>
         <TextInput
             style={styles.input}
-            placeholder="Income"
+            placeholder="Expense"
             keyboardType="numeric"
-            value={newIncome}
-            onChangeText={(text) => setNewIncome(text)}
+            value={newExpense}
+            onChangeText={(text) => setNewExpense(text)}
+        />
+        <TextInput
+            style={styles.input}
+            placeholder="Wages"
+            keyboardType="numeric"
+            value={newWages}
+            onChangeText={(text) => setNewWages(text)}
         />
         <Picker
             selectedValue={selectedZone}
@@ -196,7 +213,7 @@ const handleOnPressStartDate = () => {
                   <Text placeholder="Select Date">{selectedStartDate}</Text>
                 </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.ModaladdButton} onPress={handleAddIncome}>
+        <TouchableOpacity style={styles.ModaladdButton} onPress={handleAddExpense}>
             <Text style={{ color: 'white' }}>Add</Text>
         </TouchableOpacity>
 
@@ -243,32 +260,39 @@ const handleOnPressStartDate = () => {
     {/* End of modal for date picker */}
 
     <ScrollView>
-      {incomeData.map((item, index) => (
+      {expenseData.map((item, index) => (
         <View key={index} style={styles.rectangle}>
-          <Text style={styles.date}>
-            <Text style={{ fontSize: 25 }}>12</Text>
-            <br />
-            June
-          </Text>
-          <View style={styles.separator} />
-          <Text style={styles.text}>
-            <Text style={{ color: "#888888", fontSize: 14 }}>
-              Income Generated
-            </Text>
-            <br />
-            <Text style={{ color: "black", fontSize: 24 }}>
-              LKR, {item.income}
-            </Text>
-          </Text>
-          <View style={styles.columnContainer}>
-            <View style={[styles.zoneRec, getZoneBackgroundColor(item.zone)]}>
+        <Text style={styles.date}>
+          <Text style={{ fontSize: 25 }}>12</Text>
+          <br />
+          June
+        </Text>
+        <View style={styles.separator}></View>
+        <Text style={styles.text}>
+          <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}
+          <br />
+          LKR {item.wages}
+          <br />
+          <br />
+          <Text style={{ color: "#888888", fontSize: 12 }}>Other Expenditure</Text>{" "}
+          <br />
+          LKR {item.expense}
+          <br />
+          <br />
+        </Text>
+        <View style={styles.columnContainer}>
+          <View style={styles.zoneRec}>
+          <View style={[styles.zoneRec, getZoneBackgroundColor(item.zone)]}>
               <Text style={styles.zoneRecText}>{`Zone ${item.zone}`}</Text>
             </View>
             <View style={styles.qtyRec}>
               <Text style={styles.qtyRecText}>{`QTY ${item.qty}`}</Text>
             </View>
           </View>
+          
         </View>
+      </View>
+        
       ))}
     </ScrollView>
     </KeyboardAvoidingView>

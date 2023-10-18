@@ -9,12 +9,12 @@ export default function LandOwner() {
 
   const handleExpenseBtn = () => {
     // Navigate to PlantationDetails
-    navigation.navigate("PlantationDetails");
+    navigation.navigate("LandOwnerHE");
   };
 
   const handleIncomeBtn = () => {
     // Navigate to LandOwnerIncome
-    navigation.navigate("LandOwnerIncome");
+    navigation.navigate("LandOwnerHI");
   };
 
   return (
