@@ -23,7 +23,6 @@ export default function MaintenanceDetails() {
   const [wages, setNewWages] = useState("");
   const [other, setNewOther] = useState("");
   const [zone, setSelectedZone] = useState("A");
-
   const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
   const today = new Date();
   const startDate = getFormatedDate(
@@ -32,20 +31,16 @@ export default function MaintenanceDetails() {
   );
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [startedDate, setStartedDate] = useState("12/12/2023");
-
   function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
   }
-
   const handleOnPressStartDate = () => {
     setOpenStartDatePicker(!openStartDatePicker);
   };
-
   const zones = ["A", "B", "C", "D"];
   const showAddPopup = () => {
     setIsAddPopupVisible(true);
   };
-
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
@@ -53,7 +48,6 @@ export default function MaintenanceDetails() {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
     const parsedWages = parseInt(wages, 10); // Convert wages to an integer
     const parsedOther = parseInt(other, 10); // Convert other to an integer
-  
     addDoc(collection(db, "maintainEx"), {
       date: formattedDate,
       wages: parsedWages, // Send wages as an integer
@@ -143,7 +137,6 @@ export default function MaintenanceDetails() {
             </View>
           </View>
         </Modal>
-
         <Modal
           animationType="slide"
           transparent={true}
@@ -167,14 +160,12 @@ export default function MaintenanceDetails() {
                   borderColor: "rgba(122, 146, 165, 0.1)",
                 }}
               />
-
               <TouchableOpacity onPress={handleOnPressStartDate}>
                 <Text style={{ color: "#05AF6D" }}>Done</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-
         <View style={styles.container}>
           <View style={styles.marginContainer}>
             <Text style={styles.headerText}>
