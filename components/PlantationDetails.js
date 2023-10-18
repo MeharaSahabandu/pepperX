@@ -92,7 +92,7 @@ export default function PlantationDetails() {
   return (
     <>
       <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : ""}
+        behavior={Platform.OS == "ios" ? "padding" : "100"}
         style={{
           width: "100%",
           height: "100%",
