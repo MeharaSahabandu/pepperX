@@ -10,7 +10,7 @@ export default function SupervisorHome() {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.headerText}>All Categories</Text>
+      <Text style={styles.headerText}>Supervisor Categories</Text>
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>
       <Animatable.View // Wrap with Animatable.View for animation
