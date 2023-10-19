@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+import * as Animatable from 'react-native-animatable'; // Import Animatable
 import { styles } from "../css/ManagerHomeCSS";
 import HeaderSupervisor from "./HeaderSupervisor";
 import { useNavigation } from "@react-navigation/native";
@@ -12,6 +13,10 @@ export default function SupervisorHome() {
       <Text style={styles.headerText}>All Categories</Text>
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>
+      <Animatable.View // Wrap with Animatable.View for animation
+          animation="slideInUp" // Slide-up animation
+          duration={750} // Animation duration (1 second)
+        >
         <TouchableOpacity
           onPress={() => navigation.navigate("Plantation Details")}
         >
@@ -24,7 +29,11 @@ export default function SupervisorHome() {
             <Text style={styles.text}>Plantation</Text>
           </View>
         </TouchableOpacity>
-
+        </Animatable.View>
+        <Animatable.View // Wrap with Animatable.View for animation
+          animation="slideInUp" // Slide-up animation
+          duration={1000} // Animation duration (1 second)
+        >
         <TouchableOpacity onPress={() => navigation.navigate("Maintenance Details")}>
           <View style={styles.rectangle}>
             <Image
@@ -35,6 +44,7 @@ export default function SupervisorHome() {
             <Text style={styles.text}>Maintenance</Text>
           </View>
         </TouchableOpacity>
+        </Animatable.View>
       </View>
       <View style={styles.container2}>
         <Image source={require("../assets/Wheat.png")} style={styles.backgroundImage1} />
