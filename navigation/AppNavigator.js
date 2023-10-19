@@ -3,6 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MachineOperator from "../components/MachineOperator";
 import MachineOperations from "../components/MachineOperations";
+import LandingPage from "../components/LandingPage";
+import UserNav from "../components/UserNav";
 import ManagerHome from "../components/ManagerHome";
 import AllIncome from "../components/AllIncome";
 import SupervisorHome from "../components/SupervisorHome";
@@ -32,13 +34,12 @@ function AppNavigator() {
         <Stack.Screen name="LandOwner" component={LandOwner} />
         <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
         <Stack.Screen name="ManagerHome" component={ManagerHome} />
-        <Stack.Screen name="SupervisorHome" component={SupervisorHome} />
-        <Stack.Screen name="PlantationDetails" component={PlantationDetails} />
         <Stack.Screen name="Machine Operator" component={MachineOperator} />
         <Stack.Screen name="Machine Operations" component={MachineOperations} />
-        <Stack.Screen name="MaintenanceDetails" component={MaintenanceDetails} />
         <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
         <Stack.Screen name="PlantationDataList" component={PlantationDataList} />
+        <Stack.Screen name="landingPage" component={LandingPage} />
+        <Stack.Screen name="UserNav" component={UserNav} />
       </Stack.Navigator>
     </NavigationContainer>
   );
