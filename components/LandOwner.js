@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import * as Animatable from 'react-native-animatable'; // Import Animatable
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "../css/LandOwnerStyles";
-import Header from "./Header";
+import HeaderLandOwner from "./HeaderLandOwner";
 
 export default function LandOwner() {
   const navigation = useNavigation();
@@ -18,7 +18,7 @@ export default function LandOwner() {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <HeaderLandOwner />
       <Text style={styles.headerText}>Land Owner Categories</Text>
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>

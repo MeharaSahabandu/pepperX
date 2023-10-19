@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import * as Animatable from 'react-native-animatable'; // Import Animatable
 import { styles } from "../css/ManagerHomeCSS";
-import Header from "./Header";
+import HeaderSupervisor from "./HeaderSupervisor";
 import { useNavigation } from "@react-navigation/native";
 
 export default function SupervisorHome() {
@@ -45,6 +45,10 @@ export default function SupervisorHome() {
           </View>
         </TouchableOpacity>
         </Animatable.View>
+      </View>
+      <View style={styles.container2}>
+        <Image source={require("../assets/Wheat.png")} style={styles.backgroundImage1} />
+        <Image source={require("../assets/Wheat.png")} style={styles.backgroundImage2} />
       </View>
     </View>
   );

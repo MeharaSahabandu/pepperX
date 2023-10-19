@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import * as Animatable from 'react-native-animatable'; // Import Animatable
 import { styles } from "../css/ManagerHomeCSS";
-import Header from "./Header";
+import HeaderManager from "./HeaderManager";
 
 export default function ManagerHome() {
   return (
