@@ -17,6 +17,16 @@ import { collection, query, getDocs, addDoc } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
 
+// Function to map month number to month name
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "Jan", "Feb", "Mar", "April",
+    "May", "June", "July", "Aug",
+    "Sept", "Oct", "Nov", "Dec"
+  ];
+  return monthNames[monthNumber - 1] || "";
+};
+
 export default function LandOwnerHI() {
   const [incomeData, setIncomeData] = useState([]);
   const [isAddPopupVisible, setIsAddPopupVisible] = useState(false);
@@ -119,8 +129,8 @@ export default function LandOwnerHI() {
 
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { income, zone, qty } = doc.data();
-          data.push({ income, zone, qty });
+          const { income, zone, qty, date } = doc.data();
+          data.push({ income, zone, qty, date });
         });
 
         setIncomeData(data);
@@ -247,9 +257,9 @@ export default function LandOwnerHI() {
           {incomeData.map((item, index) => (
             <View key={index} style={styles.rectangle}>
               <Text style={styles.date}>
-                <Text style={{ fontSize: 25 }}>12</Text>
+              <Text style={{ fontSize: 25 }}>{item.date.split('/')[2]}</Text>
                 <br />
-                June
+                {getMonthName(parseInt(item.date.split('/')[1]))}
               </Text>
               <View style={styles.separator} />
               <Text style={styles.text}>
