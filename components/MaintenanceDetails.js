@@ -172,7 +172,6 @@ export default function MaintenanceDetails() {
               <br />
             </Text>
             <TouchableOpacity
-              style={styles.last30DaysButton}
               onPress={() => {
                 // Handle "Last 30 days" button click action here
               }}
