@@ -2,6 +2,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import LandingPage from "../components/LandingPage";
+import UserNav from "../components/UserNav";
 import ManagerHome from "../components/ManagerHome";
 import AllIncome from "../components/AllIncome";
 import SupervisorHome from "../components/SupervisorHome";
@@ -20,26 +22,25 @@ const Stack = createNativeStackNavigator();
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="landingPage">
+      <Stack.Screen name="landingPage" component={LandingPage} />
+      <Stack.Screen name="UserNav" component={UserNav} />
       <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
       <Stack.Screen name="Plantation Details" component={PlantationDetails} />
-      <Stack.Screen
-          name="Maintenance Details"
-          component={MaintenanceDetails}
-        />
-        <Stack.Screen name="All Expenditure" component={AllExpenditure} />
-        <Stack.Screen name="All Income" component={AllIncome} />
-        <Stack.Screen name="BarScreen" component={BarScreen} />
-        <Stack.Screen name="All Zones" component={AllZones} />
-        <Stack.Screen name="LandOwner" component={LandOwner} />
-        <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
-        <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
+      <Stack.Screen name="Maintenance Details" component={MaintenanceDetails} />
+     
+      <Stack.Screen name="All Expenditure" component={AllExpenditure} />
+      <Stack.Screen name="All Income" component={AllIncome} />
+      <Stack.Screen name="BarScreen" component={BarScreen} />
+      <Stack.Screen name="All Zones" component={AllZones} />
 
-        <Stack.Screen name="ManagerHome" component={ManagerHome} />
-        <Stack.Screen
-          name="PlantationDataList"
-          component={PlantationDataList}
-        />
+      <Stack.Screen name="LandOwner" component={LandOwner} />
+      <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
+      <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
+
+      <Stack.Screen name="ManagerHome" component={ManagerHome} />
+      <Stack.Screen name="PlantationDataList" component={PlantationDataList} />
+        
 
       </Stack.Navigator>
     </NavigationContainer>
