@@ -16,6 +16,7 @@ import LandOwnerHE from "../components/LandOwnerHE";
 import AllZones from "../components/AllZones";
 import AllExpenditure from "../components/AllExpenditure";
 import BarScreen from "../components/BarScreen";
+import Login from "../components/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +24,8 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
-      <Stack.Screen name="landingPage" component={LandingPage} />
+      <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>
+      <Stack.Screen name="login" component={Login}  options={{ headerShown: false }}/>
       <Stack.Screen name="UserNav" component={UserNav} />
       <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
       <Stack.Screen name="Plantation Details" component={PlantationDetails} />
