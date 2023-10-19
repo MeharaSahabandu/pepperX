@@ -7,7 +7,7 @@ import HeaderManager from "./HeaderManager";
 export default function ManagerHome() {
   return (
     <View style={styles.container}>
-      <Header />
+      <HeaderManager />
       <Text style={styles.headerText}>Manager Categories</Text>
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>

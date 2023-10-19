@@ -9,7 +9,7 @@ export default function SupervisorHome() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Header />
+      <HeaderSupervisor />
       <Text style={styles.headerText}>Supervisor Categories</Text>
       <Text style={styles.headerPara}>Choose the operation you want to do</Text>
       <View style={styles.marginContainer}>
