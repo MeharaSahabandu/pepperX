@@ -21,7 +21,7 @@ export default function Login() {
       setUsername("");
       setPassword("");
     } else if(username === "landowner" && password === "kani123"){
-        navigation.navigate("All Income");
+        navigation.navigate("UserNav");
         setUsername("");
         setPassword("");
     }
@@ -30,6 +30,11 @@ export default function Login() {
         setUsername("");
         setPassword("");
     }
+    else if(username === "admin" && password === "admin"){
+      navigation.navigate("UserNav");
+      setUsername("");
+      setPassword("");
+  }
     else {
       alert("Invalid username or password");
     }

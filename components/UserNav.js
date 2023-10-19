@@ -11,6 +11,18 @@ export default function UserTypeSelection() {
     navigation.navigate("LandOwner");
   };
 
+  const handleSupervisroBtn = () => {
+    navigation.navigate("Supervisor Home");
+  };
+
+  const handleManagerBtn = () => {
+    navigation.navigate("ManagerHome");
+  };
+
+  const handleMachineOperatorBtn = () => {
+    navigation.navigate("LandOwner");
+  };
+
 
   return (
     <View style={styles.container}>
@@ -20,7 +32,7 @@ export default function UserTypeSelection() {
           animation="slideInUp"
           duration={500} // Duration for the first button
         >
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleSupervisroBtn}>
             <Text style={styles.buttonText}>Supervisor</Text>
           </TouchableOpacity>
         </Animatable.View>
@@ -36,7 +48,7 @@ export default function UserTypeSelection() {
           animation="slideInUp"
           duration={1000} // Duration for the third button
         >
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleManagerBtn}>
             <Text style={styles.buttonText}>Manager</Text>
           </TouchableOpacity>
         </Animatable.View>
@@ -44,7 +56,7 @@ export default function UserTypeSelection() {
           animation="slideInUp"
           duration={1250} // Duration for the fourth button
         >
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleMachineOperatorBtn}>
             <Text style={styles.buttonText}>Machine Operator</Text>
           </TouchableOpacity>
         </Animatable.View>
