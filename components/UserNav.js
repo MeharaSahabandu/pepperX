@@ -6,11 +6,9 @@ import * as Animatable from 'react-native-animatable';
 export default function UserTypeSelection() {
 
   const navigation = useNavigation();
-
   const handleLandOwnerBtn = () => {
     navigation.navigate("LandOwner");
   };
-
 
   return (
     <View style={styles.container}>
