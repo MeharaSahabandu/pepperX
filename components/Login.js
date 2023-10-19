@@ -69,6 +69,10 @@ export default function Login() {
           </Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.container2}>
+        <Image source={require("../assets/Group.png")} style={styles.backgroundImage1} />
+        <Image source={require("../assets/Group.png")} style={styles.backgroundImage2} />
+      </View>
     </View>
   );
 }
