@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator();
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator initialRouteName="Supervisor Home">
       <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>
       <Stack.Screen name="login" component={Login}  options={{ headerShown: false }}/>
       <Stack.Screen name="UserNav" component={UserNav} />
@@ -39,7 +39,6 @@ function AppNavigator() {
       <Stack.Screen name="LandOwner" component={LandOwner} />
       <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
       <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
-
       <Stack.Screen name="ManagerHome" component={ManagerHome} />
       <Stack.Screen name="PlantationDataList" component={PlantationDataList} />
         
