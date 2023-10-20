@@ -26,7 +26,6 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
-      <Stack.Screen name="Plantation Details" component={PlantationDetails} />
         <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
         <Stack.Screen name="Machine Operator" component={MachineOperator} />
         <Stack.Screen name="Machine Operations" component={MachineOperations} />        
