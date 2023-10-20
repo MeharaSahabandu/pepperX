@@ -52,7 +52,40 @@ export default function PlantationDetails() {
     setStartedDate(propDate);
   }
   const [plantationData, setPlantationData] = useState([]);
-
+  const filterDataByRange = (data, range) => {
+    const currentDate = new Date();
+    switch (range) {
+      case "last7":
+        // Filter data for the last 7 days
+        const last7Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 7
+        );
+        return data.filter((item) => new Date(item.date) >= last7Days);
+      case "last30":
+        // Filter data for the last 30 days
+        const last30Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 30
+        );
+        return data.filter((item) => new Date(item.date) >= last30Days);
+      case "lastyear":
+        // Filter data for the last year
+        const lastYear = new Date(
+          currentDate.getFullYear() - 1,
+          currentDate.getMonth(),
+          currentDate.getDate()
+        );
+        return data.filter((item) => new Date(item.date) >= lastYear);
+      case "all":
+        // No filtering, return all data
+        return data;
+      default:
+        return data;
+    }
+  };
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
       case "A":
@@ -118,21 +151,23 @@ export default function PlantationDetails() {
   const [selectedRange, setSelectedRange] = useState("last30");
   useEffect(() => {
     const fetchPlantationData = async () => {
-      const q = query(collection(db, "plantationEx"));
+      const q = query(collection(db, "maintainEx"));
       try {
         const querySnapshot = await getDocs(q);
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { wages, otherEx, zone, date } = doc.data();
-          data.push({ wages, otherEx, zone, date });
+          const { wages, other, zone, date } = doc.data();
+          data.push({ wages, other, zone, date });
         });
-        setPlantationData(data );
+
+        const filteredData = filterDataByRange(data, selectedRange);
+        setPlantationData(filteredData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
     fetchPlantationData();
-  }, []);
+  }, [selectedRange]);
   return (
     <>
       <KeyboardAvoidingView
@@ -283,6 +318,10 @@ export default function PlantationDetails() {
                     </Text>
                     <br />
                     {getMonthName(parseInt(item.date.split("/")[1]))}
+                    <br/>
+                    <Text style={{ fontSize: 11 }}>
+                      {item.date.split("/")[0]}
+                    </Text>
                   </Text>
                   <View style={styles.separator} />
                   <Text style={styles.text}>

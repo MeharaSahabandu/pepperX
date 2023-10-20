@@ -25,11 +25,12 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="Plantation Details" component={PlantationDetails} />
       <Stack.Screen
           name="Maintenance Details"
           component={MaintenanceDetails}
         />
-      <Stack.Screen name="Plantation Details" component={PlantationDetails} />
+      
       <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
         <Stack.Screen
           name="landingPage"
