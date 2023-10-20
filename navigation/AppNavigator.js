@@ -24,7 +24,7 @@ const Stack = createNativeStackNavigator();
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="landingPage">
+      <Stack.Navigator initialRouteName="Machine Operations">
         <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
         <Stack.Screen name="Machine Operator" component={MachineOperator} />
         <Stack.Screen name="Machine Operations" component={MachineOperations} />        
