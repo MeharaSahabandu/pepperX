@@ -29,11 +29,77 @@ export default function PlantationDetails() {
     today.setDate(today.getDate() + 1),
     "YYYY/MM/DD"
   );
+  const getMonthName = (monthNumber) => {
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "April",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return monthNames[monthNumber - 1] || "";
+  };
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [startedDate, setStartedDate] = useState("12/12/2023");
   function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
   }
+  const [plantationData, setPlantationData] = useState([]);
+  const filterDataByRange = (data, range) => {
+    const currentDate = new Date();
+    switch (range) {
+      case "last7":
+        // Filter data for the last 7 days
+        const last7Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 7
+        );
+        return data.filter((item) => new Date(item.date) >= last7Days);
+      case "last30":
+        // Filter data for the last 30 days
+        const last30Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 30
+        );
+        return data.filter((item) => new Date(item.date) >= last30Days);
+      case "lastyear":
+        // Filter data for the last year
+        const lastYear = new Date(
+          currentDate.getFullYear() - 1,
+          currentDate.getMonth(),
+          currentDate.getDate()
+        );
+        return data.filter((item) => new Date(item.date) >= lastYear);
+      case "all":
+        // No filtering, return all data
+        return data;
+      default:
+        return data;
+    }
+  };
+  const getZoneBackgroundColor = (zone) => {
+    switch (zone) {
+      case "A":
+        return styles.zoneRecA;
+      case "B":
+        return styles.zoneRecB;
+      case "C":
+        return styles.zoneRecC;
+      case "D":
+        return styles.zoneRecD;
+      default:
+        return {};
+    }
+  };
   const handleOnPressStartDate = () => {
     setOpenStartDatePicker(!openStartDatePicker);
   };
@@ -44,11 +110,26 @@ export default function PlantationDetails() {
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
+  const refetchPlantationData = async () => {
+    const q = query(collection(db, "plantationEx"));
+    try {
+      const querySnapshot = await getDocs(q);
+
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        const { wages, otherEx, zone, date } = doc.data();
+        data.push({ wages, otherEx, zone, date });
+      });
+
+      setPlantationData(data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
   const handleAddExpenditure = () => {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
     const parsedWages = parseInt(wages, 10); // Convert wages to an integer
     const parsedOther = parseInt(otherEx, 10); // Convert other to an integer
-  
     addDoc(collection(db, "plantationEx"), {
       date: formattedDate,
       wages: parsedWages, // Send wages as an integer
@@ -60,12 +141,33 @@ export default function PlantationDetails() {
         setNewWages("");
         setNewOther("");
         setSelectedZone("");
+        refetchPlantationData();
       })
       .catch((error) => {
         console.log(error);
       });
     hideAddPopup();
   };
+  const [selectedRange, setSelectedRange] = useState("last30");
+  useEffect(() => {
+    const fetchPlantationData = async () => {
+      const q = query(collection(db, "maintainEx"));
+      try {
+        const querySnapshot = await getDocs(q);
+        const data = [];
+        querySnapshot.forEach((doc) => {
+          const { wages, other, zone, date } = doc.data();
+          data.push({ wages, other, zone, date });
+        });
+
+        const filteredData = filterDataByRange(data, selectedRange);
+        setPlantationData(filteredData);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchPlantationData();
+  }, [selectedRange]);
   return (
     <>
       <KeyboardAvoidingView
@@ -76,10 +178,6 @@ export default function PlantationDetails() {
           backgroundColor: "#fff",
         }}
       >
-        <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
-          <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
-
         <Modal
           animationType="slide"
           transparent={true}
@@ -101,12 +199,12 @@ export default function PlantationDetails() {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedZone(itemValue)
                 }
-                style={styles.picker}
+                style={styles.zonepicker}
               >
                 {zones.map((zone) => (
                   <Picker.Item key={zone} label={zone} value={zone} />
                 ))}
-              </Picker>
+              </Picker><br/>
               <TextInput
                 style={styles.input}
                 placeholder="Other Expenditures"
@@ -172,19 +270,87 @@ export default function PlantationDetails() {
             <Text style={styles.headerText}>
               <b>Plantation</b>
               <br />
-            </Text>
+            </Text>{" "}
+            <Picker
+              selectedValue={selectedRange}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedRange(itemValue)
+              }
+              style={styles.picker}
+            >
+              <Picker.Item label="Last 7 Days" value="last7" />
+              <Picker.Item label="Last 30 Days" value="last30" />
+              <Picker.Item label="Last Year" value="lastyear" />
+              <Picker.Item label="All" value="all" />
+            </Picker>
             <TouchableOpacity
               style={styles.last30DaysButtonP}
               onPress={() => {
-                // Handle "Last 30 days" button click action here
+                // Handle the selected range here
+                switch (selectedRange) {
+                  case "last7":
+                    // Handle "Last 7 Days" logic
+                    break;
+                  case "last30":
+                    // Handle "Last 30 Days" logic
+                    break;
+                  case "lastyear":
+                    // Handle "Last Year" logic
+                    break;
+                  case "all":
+                    // Handle "All" logic
+                    break;
+                  default:
+                    break;
+                }
               }}
-            >
-              <Text style={styles.last30DaysButtonText}> Last 30 days </Text>
-            </TouchableOpacity>
+            ></TouchableOpacity>
             <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
-            <PlantationDataList />
+            <br />
+            <View>
+              {plantationData.map((item, index) => (
+                <View key={index} style={styles.rectangle}>
+                  <Text style={styles.date}>
+                    <Text style={{ fontSize: 25 }}>
+                      {item.date.split("/")[2]}
+                    </Text>
+                    <br />
+                    {getMonthName(parseInt(item.date.split("/")[1]))}
+                    <br/>
+                    <Text style={{ fontSize: 11 }}>
+                      {item.date.split("/")[0]}
+                    </Text>
+                  </Text>
+                  <View style={styles.separator} />
+                  <Text style={styles.text}>
+                    <Text style={{ color: "#888888", fontSize: 12 }}>
+                      Wages Paid
+                    </Text>
+                    <br />
+                    LKR {item.wages}
+                    <br />
+                    <br />
+                    <Text style={{ color: "#888888", fontSize: 12 }}>
+                      Other Expenditure
+                    </Text>
+                    <br />
+                    LKR {item.otherEx}
+                  </Text>
+                  <View style={styles.columnContainer}>
+                    <View
+                      style={[
+                        styles.zoneRec,
+                        getZoneBackgroundColor(item.zone),
+                      ]}
+                    >
+                      <Text style={styles.zoneRecText}>Zone {item.zone}</Text>
+                    </View>
+                  </View>
+                </View>
+              ))}
+            </View>
           </View>
         </View>
       </KeyboardAvoidingView>
