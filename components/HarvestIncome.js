@@ -4,9 +4,27 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
 
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return monthNames[monthNumber - 1] || "";
+};
+
 export default function HarvestIncome() {
   const [incomeData, setIncomeData] = useState([]);
-  const [selectedRange, setSelectedRange] = useState("last30");
+  
 
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
@@ -23,56 +41,42 @@ export default function HarvestIncome() {
     }
   };
 
-  const currentDate = new Date();
-  switch (range) {
-    case "last7":
-      // Filter data for the last 7 days
-      const last7Days = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate() - 7
-      );
-      return data.filter((item) => new Date(item.date) >= last7Days);
-    case "last30":
-      // Filter data for the last 30 days
-      const last30Days = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate() - 30
-      );
-      return data.filter((item) => new Date(item.date) >= last30Days);
-    case "lastyear":
-      // Filter data for the last year
-      const lastYear = new Date(
-        currentDate.getFullYear() - 1,
-        currentDate.getMonth(),
-        currentDate.getDate()
-      );
-      return data.filter((item) => new Date(item.date) >= lastYear);
-    case "all":
-      // No filtering, return all data
-      return data;
-    default:
-      return data;
-  }
-
-  const getMonthName = (monthNumber) => {
-    const monthNames = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "April",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    return monthNames[monthNumber - 1] || "";
+  const filterDataByRange = (data, range) => {
+    const currentDate = new Date();
+    switch (range) {
+      case "last7":
+        // Filter data for the last 7 days
+        const last7Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 7
+        );
+        return data.filter((item) => new Date(item.date) >= last7Days);
+      case "last30":
+        // Filter data for the last 30 days
+        const last30Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 30
+        );
+        return data.filter((item) => new Date(item.date) >= last30Days);
+      case "lastyear":
+        // Filter data for the last year
+        const lastYear = new Date(
+          currentDate.getFullYear() - 1,
+          currentDate.getMonth(),
+          currentDate.getDate()
+        );
+        return data.filter((item) => new Date(item.date) >= lastYear);
+      case "all":
+        // No filtering, return all data
+        return data;
+      default:
+        return data;
+    }
   };
+  
+  const [selectedRange, setSelectedRange] = useState("last30");
 
   const fetchHarvestIncome = async () => {
     const q = query(collection(db, "harvestIncome"));
@@ -165,4 +169,5 @@ export default function HarvestIncome() {
       ))}
     </ScrollView>
   );
+
 }
