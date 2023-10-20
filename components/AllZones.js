@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../css/AllZonesStyles";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "./config"; // Import your Firestore config
+import { db } from "./config";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AllZones() {
+  const navigation = useNavigation();
   const [selectedZone, setSelectedZone] = useState("A");
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpenditure, setTotalExpenditure] = useState(0);
@@ -115,7 +117,10 @@ export default function AllZones() {
             </View>
             <Text style={styles.revenueValue}>{`LKR ${totalIncome}`}</Text>
           </View>
-          <TouchableOpacity style={styles.detailsButton}>
+          <TouchableOpacity
+            style={styles.detailsButton}
+            onPress={() => navigation.navigate("All Income")}
+          >
             <Text style={styles.detailsButtonText}>Details</Text>
           </TouchableOpacity>
         </View>
@@ -126,7 +131,10 @@ export default function AllZones() {
             </View>
             <Text style={styles.exValue}>{`LKR ${totalExpenditure}`}</Text>
           </View>
-          <TouchableOpacity style={styles.detailsButton}>
+          <TouchableOpacity
+            style={styles.detailsButton}
+            onPress={() => navigation.navigate("All Expenditure")}
+          >
             <Text style={styles.detailsButtonText}>Details</Text>
           </TouchableOpacity>
         </View>
