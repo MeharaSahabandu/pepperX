@@ -8,6 +8,17 @@ export const styles = StyleSheet.create({
   marginContainer: {
     marginHorizontal: 20,
   },
+  picker2: {
+    height: 40, // Set the height of the Picker
+    borderColor: "#05AF6D",
+    width: 150,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginTop: 20, // Add space below the Picker
+    marginBottom: 10,
+    marginLeft: 10,
+  },
   headerText: {
     fontSize: 30,
     textAlign: "center",
