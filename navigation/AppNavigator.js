@@ -25,6 +25,11 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+          name="landingPage"
+          component={LandingPage}
+          options={{ headerShown: false }}
+        />
       <Stack.Screen name="Plantation Details" component={PlantationDetails} />
       <Stack.Screen
           name="Maintenance Details"
@@ -32,11 +37,7 @@ function AppNavigator() {
         />
       
       <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
-        <Stack.Screen
-          name="landingPage"
-          component={LandingPage}
-          options={{ headerShown: false }}
-        />
+
         <Stack.Screen
           name="login"
           component={Login}
