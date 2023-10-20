@@ -204,7 +204,8 @@ export default function PlantationDetails() {
                 {zones.map((zone) => (
                   <Picker.Item key={zone} label={zone} value={zone} />
                 ))}
-              </Picker><br/>
+              </Picker>
+              <br />
               <TextInput
                 style={styles.input}
                 placeholder="Other Expenditures"
@@ -318,7 +319,7 @@ export default function PlantationDetails() {
                     </Text>
                     <br />
                     {getMonthName(parseInt(item.date.split("/")[1]))}
-                    <br/>
+                    <br />
                     <Text style={{ fontSize: 11 }}>
                       {item.date.split("/")[0]}
                     </Text>
