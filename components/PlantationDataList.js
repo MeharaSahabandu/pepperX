@@ -4,7 +4,6 @@ import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/PlantationDetailsCSS";
 import { db } from "./config";
 
-// Function to map month number to month name
 const getMonthName = (monthNumber) => {
   const monthNames = [
     "Jan", "Feb", "Mar", "April",

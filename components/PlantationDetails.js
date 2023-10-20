@@ -23,7 +23,6 @@ export default function PlantationDetails() {
   const [wages, setNewWages] = useState("");
   const [otherEx, setNewOther] = useState("");
   const [zone, setSelectedZone] = useState("A");
-
   const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
   const today = new Date();
   const startDate = getFormatedDate(
@@ -32,25 +31,19 @@ export default function PlantationDetails() {
   );
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [startedDate, setStartedDate] = useState("12/12/2023");
-
   function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
   }
-
   const handleOnPressStartDate = () => {
     setOpenStartDatePicker(!openStartDatePicker);
   };
-
   const zones = ["A", "B", "C", "D"];
-
   const showAddPopup = () => {
     setIsAddPopupVisible(true);
   };
-
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
-
   const handleAddExpenditure = () => {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
     const parsedWages = parseInt(wages, 10); // Convert wages to an integer
@@ -73,22 +66,6 @@ export default function PlantationDetails() {
       });
     hideAddPopup();
   };
-
-  const getZoneBackgroundColor = (zone) => {
-    switch (zone) {
-      case "A":
-        return styles.zoneRecA;
-      case "B":
-        return styles.zoneRecB;
-      case "C":
-        return styles.zoneRecC;
-      case "D":
-        return styles.zoneRecD;
-      default:
-        return {};
-    }
-  };
-
   return (
     <>
       <KeyboardAvoidingView
@@ -161,8 +138,6 @@ export default function PlantationDetails() {
             </View>
           </View>
         </Modal>
-
-        {/* modal for date picker */}
         <Modal
           animationType="slide"
           transparent={true}
@@ -186,14 +161,12 @@ export default function PlantationDetails() {
                   borderColor: "rgba(122, 146, 165, 0.1)",
                 }}
               />
-
               <TouchableOpacity onPress={handleOnPressStartDate}>
                 <Text style={{ color: "#05AF6D" }}>Done</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-
         <View style={styles.container}>
           <View style={styles.marginContainer}>
             <Text style={styles.headerText}>

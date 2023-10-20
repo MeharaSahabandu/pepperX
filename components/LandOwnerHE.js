@@ -19,6 +19,17 @@ import { collection, query, getDocs, addDoc } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
 
+// Function to map month number to month name
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "Jan", "Feb", "Mar", "April",
+    "May", "June", "July", "Aug",
+    "Sept", "Oct", "Nov", "Dec"
+  ];
+  return monthNames[monthNumber - 1] || "";
+};
+
+
 export default function LandOwnerHE() {
   const [expenseData, setExpenseData] = useState([]);
 
@@ -68,8 +79,8 @@ const handleOnPressStartDate = () => {
 
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { expense, wages , zone, qty } = doc.data();
-          data.push({ expense, wages , zone, qty });
+          const { expense, wages , zone, qty, date } = doc.data();
+          data.push({ expense, wages , zone, qty, date });
         });
 
         setExpenseData(data);
@@ -263,10 +274,10 @@ const handleOnPressStartDate = () => {
       {expenseData.map((item, index) => (
         <View key={index} style={styles.rectangle}>
         <Text style={styles.date}>
-          <Text style={{ fontSize: 25 }}>12</Text>
-          <br />
-          June
-        </Text>
+          <Text style={{ fontSize: 25 }}>{item.date.split('/')[2]}</Text>
+              <br />
+              {getMonthName(parseInt(item.date.split('/')[1]))}
+          </Text>
         <View style={styles.separator}></View>
         <Text style={styles.text}>
           <Text style={{ color: "#888888", fontSize: 12 }}>Wages Paid</Text>{" "}

@@ -2,6 +2,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import LandingPage from "../components/LandingPage";
+import UserNav from "../components/UserNav";
 import ManagerHome from "../components/ManagerHome";
 import AllIncome from "../components/AllIncome";
 import SupervisorHome from "../components/SupervisorHome";
@@ -15,6 +17,7 @@ import AllZones from "../components/AllZones";
 import AllExpenditure from "../components/AllExpenditure";
 import BarScreen from "../components/BarScreen";
 import BarGraph from "../components/BarGraph";
+import Login from "../components/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,17 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="landingPage"
+          component={LandingPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="UserNav" component={UserNav} />
         <Stack.Screen name="Finance Balances" component={BarScreen} />
         <Stack.Screen name="Bar Graph" component={BarGraph} />
         <Stack.Screen name="All Zones" component={AllZones} />
