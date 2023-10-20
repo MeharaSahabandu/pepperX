@@ -111,6 +111,13 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 5,
   },
+  picker:{
+    width:130,
+    marginLeft:12,
+    marginTop:20,
+    borderRadius:8,
+    padding:5
+  },
   rectangle: {
     flexDirection: "row",
     height: 140,
