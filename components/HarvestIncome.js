@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Picker, TouchableOpacity } from "react-native";
 import { collection, query, getDocs } from "firebase/firestore";
 import { styles } from "../css/AllIncomeStyles";
 import { db } from "./config";
@@ -24,7 +24,6 @@ const getMonthName = (monthNumber) => {
 
 export default function HarvestIncome() {
   const [incomeData, setIncomeData] = useState([]);
-  
 
   const getZoneBackgroundColor = (zone) => {
     switch (zone) {
@@ -75,7 +74,7 @@ export default function HarvestIncome() {
         return data;
     }
   };
-  
+
   const [selectedRange, setSelectedRange] = useState("last30");
 
   const fetchHarvestIncome = async () => {
@@ -84,8 +83,8 @@ export default function HarvestIncome() {
       const querySnapshot = await getDocs(q);
       const data = [];
       querySnapshot.forEach((doc) => {
-        const { income, wages, date } = doc.data();
-        data.push({ income, wages, date });
+        const { income, wages, date, zone, qty } = doc.data();
+        data.push({ income, wages, date, zone, qty });
       });
 
       const filteredData = filterDataByRange(data, selectedRange);
@@ -96,7 +95,7 @@ export default function HarvestIncome() {
   };
 
   useEffect(() => {
-    // Fetch data from the 'harvestIncome' collection
+    // Fetch data from the 'harvestIncome' collections
     fetchHarvestIncome(); // Fetch data initially
 
     // ... other code ...
@@ -169,5 +168,4 @@ export default function HarvestIncome() {
       ))}
     </ScrollView>
   );
-
 }
