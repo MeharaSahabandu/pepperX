@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   rectangle: {
     flexDirection: "row",
     height: 140,
-    backgroundColor: "white",
+    backgroundColor: "#F5F5F5",
     marginTop: 10,
     borderRadius: 10,
   },
@@ -112,7 +112,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: "85%",
-    marginTop: "2%",
+    marginTop: "-12%",
+    marginBottom: "5%",
   },
   addButtonText: {
     color: "#fff",
@@ -189,6 +190,18 @@ export const styles = StyleSheet.create({
     marginBottom: 10,   // Add space below the Picker
   },
 
+  picker2: {
+    height: 40, // Set the height of the Picker
+    borderColor: "#05AF6D",
+    width: 150,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    marginTop: 20, // Add space below the Picker
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+
   datePicker: {
     height: 40,          // Set the height of the DatePicker
     borderColor: "#05AF6D",
@@ -196,6 +209,15 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     marginBottom: 10,   // Add space below the DatePicker
+  },
+  last30DaysButtonText: {
+    marginTop: "4%",
+    marginLeft: "8%",
+  },
+
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center", // Center the content vertically
   },
 
   // modal styles end
