@@ -118,6 +118,10 @@ export const styles = StyleSheet.create({
     borderRadius:8,
     padding:5
   },
+  zonepicker:{
+    height:35,
+    borderRadius:6
+  },
   rectangle: {
     flexDirection: "row",
     height: 140,

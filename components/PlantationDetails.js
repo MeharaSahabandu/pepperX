@@ -77,11 +77,26 @@ export default function PlantationDetails() {
   const hideAddPopup = () => {
     setIsAddPopupVisible(false);
   };
+  const refetchPlantationData = async () => {
+    const q = query(collection(db, "plantationEx"));
+    try {
+      const querySnapshot = await getDocs(q);
+
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        const { wages, otherEx, zone, date } = doc.data();
+        data.push({ wages, otherEx, zone, date });
+      });
+
+      setPlantationData(data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
   const handleAddExpenditure = () => {
     const formattedDate = getFormatedDate(selectedStartDate, "YYYY/MM/DD");
     const parsedWages = parseInt(wages, 10); // Convert wages to an integer
     const parsedOther = parseInt(otherEx, 10); // Convert other to an integer
-
     addDoc(collection(db, "plantationEx"), {
       date: formattedDate,
       wages: parsedWages, // Send wages as an integer
@@ -93,6 +108,7 @@ export default function PlantationDetails() {
         setNewWages("");
         setNewOther("");
         setSelectedZone("");
+        refetchPlantationData();
       })
       .catch((error) => {
         console.log(error);
@@ -148,12 +164,12 @@ export default function PlantationDetails() {
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedZone(itemValue)
                 }
-                style={styles.picker}
+                style={styles.zonepicker}
               >
                 {zones.map((zone) => (
                   <Picker.Item key={zone} label={zone} value={zone} />
                 ))}
-              </Picker>
+              </Picker><br/>
               <TextInput
                 style={styles.input}
                 placeholder="Other Expenditures"
