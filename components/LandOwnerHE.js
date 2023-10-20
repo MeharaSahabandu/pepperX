@@ -50,6 +50,41 @@ const [selectedStartDate, setSelectedStartDate] = useState("");
 const [startedDate, setStartedDate] = useState("12/12/2023");
 
 
+const filterDataByRange = (data, range) => {
+  const currentDate = new Date();
+  switch (range) {
+    case "last7":
+      // Filter data for the last 7 days
+      const last7Days = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate() - 7
+      );
+      return data.filter((item) => new Date(item.date) >= last7Days);
+    case "last30":
+      // Filter data for the last 30 days
+      const last30Days = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate() - 30
+      );
+      return data.filter((item) => new Date(item.date) >= last30Days);
+    case "lastyear":
+      // Filter data for the last year
+      const lastYear = new Date(
+        currentDate.getFullYear() - 1,
+        currentDate.getMonth(),
+        currentDate.getDate()
+      );
+      return data.filter((item) => new Date(item.date) >= lastYear);
+    case "all":
+      // No filtering, return all data
+      return data;
+    default:
+      return data;
+  }
+};
+
 function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
   }
@@ -70,32 +105,36 @@ const handleOnPressStartDate = () => {
     setIsAddPopupVisible(false);
   };
 
+  // expense, wages , zone, qty, date
   
     // Fetch data from the 'harvestIncome' collection
-    const fetchExpenseData = async () => {
+    const [selectedRange, setSelectedRange] = useState("last30");
+
+    const fetchHarvestExpenseData = async () => {
       const q = query(collection(db, "harvestEx"));
       try {
         const querySnapshot = await getDocs(q);
-
         const data = [];
         querySnapshot.forEach((doc) => {
           const { expense, wages , zone, qty, date } = doc.data();
           data.push({ expense, wages , zone, qty, date });
         });
 
-        setExpenseData(data);
+        const filteredData = filterDataByRange(data, selectedRange);
+        setExpenseData(filteredData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
+    
 
     useEffect(() => {
         // Fetch data from the 'harvestIncome' collection
-        fetchExpenseData(); // Fetch data initially
+        fetchHarvestExpenseData(); // Fetch data initially
     
         // ... other code ...
     
-      }, []);
+      }, [selectedRange]);
 
 
   
@@ -133,7 +172,7 @@ const handleOnPressStartDate = () => {
       setNewWages("");
       setSelectedStartDate("");
 
-      fetchExpenseData(); // Call the function to fetch data again
+      fetchHarvestExpenseData(); // Call the function to fetch data again
   
       // Hide the popup
       hideAddPopup();
@@ -173,9 +212,48 @@ const handleOnPressStartDate = () => {
             backgroundColor: "#fff",
           }}
         >
-    <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
-        <Text style={styles.addButtonText}>+</Text>
-    </TouchableOpacity>
+    <View style={styles.rowContainer}>
+        <Picker
+              selectedValue={selectedRange}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedRange(itemValue)
+              }
+              style={styles.picker2}
+            >
+              <Picker.Item label="Last 7 Days" value="last7" />
+              <Picker.Item label="Last 30 Days" value="last30" />
+              <Picker.Item label="Last Year" value="lastyear" />
+              <Picker.Item label="All" value="all" />
+            </Picker>
+            <TouchableOpacity
+              style={styles.last30DaysButtonP}
+              onPress={() => {
+                // Handle the selected range here
+                switch (selectedRange) {
+                  case "last7":
+                    // Handle "Last 7 Days" logic
+                    break;
+                  case "last30":
+                    // Handle "Last 30 Days" logic
+                    break;
+                  case "lastyear":
+                    // Handle "Last Year" logic
+                    break;
+                  case "all":
+                    // Handle "All" logic
+                    break;
+                  default:
+                    break;
+                }
+              }}
+            ></TouchableOpacity>
+        
+    </View>
+
+        <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
+            <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
+    
 
     <Modal
     animationType="slide"
@@ -277,6 +355,10 @@ const handleOnPressStartDate = () => {
           <Text style={{ fontSize: 25 }}>{item.date.split('/')[2]}</Text>
               <br />
               {getMonthName(parseInt(item.date.split('/')[1]))}
+              <br/>
+                    <Text style={{ fontSize: 11 }}>
+                      {item.date.split("/")[0]}
+                    </Text>
           </Text>
         <View style={styles.separator}></View>
         <Text style={styles.text}>

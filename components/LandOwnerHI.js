@@ -43,6 +43,41 @@ export default function LandOwnerHI() {
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [startedDate, setStartedDate] = useState("12/12/2023");
 
+  const filterDataByRange = (data, range) => {
+    const currentDate = new Date();
+    switch (range) {
+      case "last7":
+        // Filter data for the last 7 days
+        const last7Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 7
+        );
+        return data.filter((item) => new Date(item.date) >= last7Days);
+      case "last30":
+        // Filter data for the last 30 days
+        const last30Days = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate() - 30
+        );
+        return data.filter((item) => new Date(item.date) >= last30Days);
+      case "lastyear":
+        // Filter data for the last year
+        const lastYear = new Date(
+          currentDate.getFullYear() - 1,
+          currentDate.getMonth(),
+          currentDate.getDate()
+        );
+        return data.filter((item) => new Date(item.date) >= lastYear);
+      case "all":
+        // No filtering, return all data
+        return data;
+      default:
+        return data;
+    }
+  };
+
   function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
   }
@@ -120,29 +155,35 @@ export default function LandOwnerHI() {
     }
   };
 
-  
+  // income, zone, qty, date
     // Fetch data from the 'harvestIncome' collection
-    const fetchIncomeData = async () => {
+    const [selectedRange, setSelectedRange] = useState("last30");
+
+    const fetchHarvestIncomeData = async () => {
       const q = query(collection(db, "harvestIncome"));
       try {
         const querySnapshot = await getDocs(q);
-
         const data = [];
         querySnapshot.forEach((doc) => {
           const { income, zone, qty, date } = doc.data();
           data.push({ income, zone, qty, date });
         });
 
-        setIncomeData(data);
+        const filteredData = filterDataByRange(data, selectedRange);
+        setIncomeData(filteredData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
+    
 
     useEffect(() => {
-        fetchIncomeData();
-        }
-    , []);
+        // Fetch data from the 'harvestIncome' collection
+        fetchHarvestIncomeData(); // Fetch data initially
+    
+        // ... other code ...
+    
+      }, [selectedRange]);
 
 
   return (
@@ -155,8 +196,46 @@ export default function LandOwnerHI() {
           backgroundColor: "#fff",
         }}
       >
+      <View style={styles.rowContainer}>
+        <Picker
+              selectedValue={selectedRange}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedRange(itemValue)
+              }
+              style={styles.picker2}
+            >
+              <Picker.Item label="Last 7 Days" value="last7" />
+              <Picker.Item label="Last 30 Days" value="last30" />
+              <Picker.Item label="Last Year" value="lastyear" />
+              <Picker.Item label="All" value="all" />
+            </Picker>
+            <TouchableOpacity
+              style={styles.last30DaysButtonP}
+              onPress={() => {
+                // Handle the selected range here
+                switch (selectedRange) {
+                  case "last7":
+                    // Handle "Last 7 Days" logic
+                    break;
+                  case "last30":
+                    // Handle "Last 30 Days" logic
+                    break;
+                  case "lastyear":
+                    // Handle "Last Year" logic
+                    break;
+                  case "all":
+                    // Handle "All" logic
+                    break;
+                  default:
+                    break;
+                }
+              }}
+            ></TouchableOpacity>
+        
+    </View>
+
         <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
-          <Text style={styles.addButtonText}>+</Text>
+            <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
 
         
