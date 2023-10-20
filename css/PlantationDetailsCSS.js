@@ -25,21 +25,21 @@ export const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   picker: {
-    height: 40,          // Set the height of the Picker
+    height: 40, // Set the height of the Picker
     borderColor: "#05AF6D",
     borderWidth: 1,
     borderRadius: 5,
     paddingLeft: 10,
-    marginBottom: 10,   // Add space below the Picker
+    marginBottom: 10, // Add space below the Picker
   },
 
   datePicker: {
-    height: 40,          // Set the height of the DatePicker
+    height: 40, // Set the height of the DatePicker
     borderColor: "#05AF6D",
     borderWidth: 1,
     borderRadius: 5,
     paddingLeft: 10,
-    marginBottom: 10,   // Add space below the DatePicker
+    marginBottom: 10, // Add space below the DatePicker
   },
   inputBtn: {
     borderWidth: 1,
@@ -59,8 +59,8 @@ export const styles = StyleSheet.create({
     margin: 5,
     borderWidth: 1,
     borderColor: "#05AF6D",
-    color: 'white', // Text color
-    alignItems: 'center',
+    color: "white", // Text color
+    alignItems: "center",
   },
   ModalcancelButton: {
     backgroundColor: "red", // Change the background color to your preferred color
@@ -68,9 +68,9 @@ export const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
     borderWidth: 1,
-    borderColor: 'red',
-    color: 'white', // Text color
-    alignItems: 'center', 
+    borderColor: "red",
+    color: "white", // Text color
+    alignItems: "center",
   },
   centeredView: {
     flex: 1,
@@ -97,32 +97,43 @@ export const styles = StyleSheet.create({
 
   modalTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
     color: "#05AF6D",
   },
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 5,
   },
+  picker:{
+    width:130,
+    marginLeft:12,
+    marginTop:20,
+    borderRadius:8,
+    padding:5
+  },
+  zonepicker:{
+    height:35,
+    borderRadius:6
+  },
   rectangle: {
     flexDirection: "row",
     height: 140,
-    backgroundColor: "#00000",
+    backgroundColor: "white",
     marginTop: 10,
     borderRadius: 10,
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black background
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent black background
   },
   image: {
     width: 80,

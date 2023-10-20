@@ -17,6 +17,7 @@ import LandOwnerHE from "../components/LandOwnerHE";
 import AllZones from "../components/AllZones";
 import AllExpenditure from "../components/AllExpenditure";
 import BarScreen from "../components/BarScreen";
+import BarGraph from "../components/BarGraph";
 import Login from "../components/Login";
 
 const Stack = createNativeStackNavigator();
@@ -37,11 +38,12 @@ function AppNavigator() {
         <Stack.Screen name="All Income" component={AllIncome} />
         <Stack.Screen name="BarScreen" component={BarScreen} />
         <Stack.Screen name="All Zones" component={AllZones} />
+        <Stack.Screen name="PlantationDataList" component={PlantationDataList} />    
+        <Stack.Screen name="Bar Graph" component={BarGraph} />
         <Stack.Screen name="LandOwner" component={LandOwner} />
         <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
-        <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
         <Stack.Screen name="ManagerHome" component={ManagerHome} />
-        <Stack.Screen name="PlantationDataList" component={PlantationDataList} />
+        <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
       </Stack.Navigator>
     </NavigationContainer>
   );
