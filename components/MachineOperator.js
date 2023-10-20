@@ -12,6 +12,10 @@ export default function LandOwner() {
     navigation.navigate("Machine Operations");
   }
 
+  function expenditureNavigate(){
+    navigation.navigate("Machine Expenditure");
+  }
+
   return (
     <View style={styles.container}>
       <Header />
@@ -28,13 +32,16 @@ export default function LandOwner() {
           <Text style={styles.text}>Machine<br/>Operations</Text>
         </View>
         </TouchableOpacity>
+
         
+        
+        <TouchableOpacity onPress={expenditureNavigate}>
         <View style={styles.rectangle}>
           <Image source={require("../assets/machineOperator02.png")} style={styles.image} />
           <View style={styles.separator}></View>
           <Text style={styles.text}>Machine<br/>Expenditure</Text>
         </View>
-        
+        </TouchableOpacity> 
       </View>
       <Image
         source={require("../assets/Wheat.png")}

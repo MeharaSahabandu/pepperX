@@ -19,6 +19,7 @@ import AllExpenditure from "../components/AllExpenditure";
 import BarScreen from "../components/BarScreen";
 import BarGraph from "../components/BarGraph";
 import Login from "../components/Login";
+import MachineExpenditure from "../components/MachineExpenditure";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ function AppNavigator() {
       <Stack.Navigator initialRouteName="landingPage">
         <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
         <Stack.Screen name="Machine Operator" component={MachineOperator} />
+        <Stack.Screen name="Machine Expenditure" component={MachineExpenditure} />
         <Stack.Screen name="Machine Operations" component={MachineOperations} />        
         <Stack.Screen name="UserNav" component={UserNav} />
         <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>

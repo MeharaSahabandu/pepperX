@@ -30,6 +30,11 @@ export default function Login() {
         setUsername("");
         setPassword("");
     }
+    else if(username === "kula07" && password === "kula123"){
+      navigation.navigate("Machine Operator");
+      setUsername("");
+      setPassword("");
+    }
     else if(username === "admin" && password === "admin"){
       navigation.navigate("UserNav");
       setUsername("");
