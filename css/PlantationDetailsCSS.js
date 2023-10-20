@@ -136,7 +136,7 @@ export const styles = StyleSheet.create({
   rectangle: {
     flexDirection: "row",
     height: 140,
-    backgroundColor: "white",
+    backgroundColor: "#F5F5F5",
     marginTop: 10,
     borderRadius: 10,
   },

@@ -268,10 +268,6 @@ export default function PlantationDetails() {
         </Modal>
         <View style={styles.container}>
           <View style={styles.marginContainer}>
-            <Text style={styles.headerText}>
-              <b>Plantation</b>
-              <br />
-            </Text>{" "}
             <Picker
               selectedValue={selectedRange}
               onValueChange={(itemValue, itemIndex) =>
