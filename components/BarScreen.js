@@ -11,6 +11,7 @@ export default function BarScreen() {
   const [totalHarvestIncome, setTotalHarvestIncome] = useState(0);
   const [totalHarvestExpenditure, setTotalHarvestExpenditure] = useState(0);
   const [totalDryPepperExpenditure, setTotalDryPepperExpenditure] = useState(0);
+  const [totalMaintainExpenditure, setMaintainExpenditure] = useState(0);
 
   useEffect(() => {
     const fetchPlantationExpenditure = async () => {
@@ -70,8 +71,8 @@ export default function BarScreen() {
       try {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-          const { otherEx, wages } = doc.data();
-          total += otherEx + wages;
+          const { expense, wages } = doc.data();
+          total += expense + wages;
         });
 
         setTotalHarvestExpenditure(total);
@@ -97,11 +98,29 @@ export default function BarScreen() {
       }
     };
 
+    const fetchMaintainExpenditure = async () => {
+      const q = query(collection(db, "maintainEx"));
+      let total = 0;
+
+      try {
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          const { other, wages } = doc.data();
+          total += other + wages;
+        });
+
+        setMaintainExpenditure(total);
+      } catch (error) {
+        console.error("Error fetching dry pepper expenditure: ", error);
+      }
+    };
+
     fetchPlantationExpenditure();
     fetchDryPepperIncome();
     fetchHarvestIncome();
     fetchHarvestExpenditure();
     fetchDryPepperExpenditure();
+    fetchMaintainExpenditure();
   }, []);
 
   return (
@@ -134,7 +153,7 @@ export default function BarScreen() {
             Maintenance Expenditure
           </Text>
           <View style={styles.horizontalLine} />
-          <Text style={styles.amount}>LKR 55,000</Text>
+          <Text style={styles.amount}>LKR {totalMaintainExpenditure}</Text>
         </View>
         <View style={styles.rectangle}>
           <Text style={[styles.text, { color: "#F2B02F" }]}>

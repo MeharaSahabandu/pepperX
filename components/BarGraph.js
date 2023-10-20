@@ -1,54 +1,48 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Text } from "react-native";
-import { BarChart } from "react-native-chart-kit";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  LabelList,
+} from "recharts";
 
-export default function ChartComponent() {
-  // Dummy data for demonstration
-  const totalIncome = 5000;
-  const totalExpenditure = 3000;
+const data = [
+  {
+    name: "Income",
+    value: 70000,
+    max: 90000,
+  },
+  {
+    name: "Expenditure",
+    value: 50000,
+    max: 90000,
+  },
+];
 
-  const data = {
-    labels: ["Income", "Expenditure"],
-    datasets: [
-      {
-        data: [totalIncome, totalExpenditure],
-      },
-    ],
-  };
-
-  const chartConfig = {
-    backgroundGradientFrom: "#fff",
-    backgroundGradientTo: "#fff",
-    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-    barPercentage: 1.0,
-    decimalPlaces: 0, // Set decimalPlaces to 0 to display integers on the Y-axis
-  };
-
+const BarGraph = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cash Flow - Net Profit</Text>
-      <BarChart
-        data={data}
-        width={Dimensions.get("window").width - 20}
-        height={220}
-        yAxisLabel="LKR "
-        chartConfig={chartConfig}
-        fromYAxis={0} // Set the starting Y-axis value to 0
-        yLabels={["0", "10k", "20k", "30k", "40k"]} // Define custom Y-axis labels
-      />
-    </View>
+    <BarChart width={320} height={300} data={data}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis type="number" domain={[10000, 90000]} />
+      <Tooltip />
+      <Legend />
+      <Bar
+        dataKey="value"
+        name="Value"
+        fill="#05AF6D"
+        barSize={40}
+        barGap={10}
+        barCategoryGap={10}
+      >
+        <LabelList dataKey="value" position="top" />
+      </Bar>
+    </BarChart>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 20,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-});
+export default BarGraph;
