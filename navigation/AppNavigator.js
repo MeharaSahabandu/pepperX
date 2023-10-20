@@ -34,7 +34,6 @@ function AppNavigator() {
         <Stack.Screen name="UserNav" component={UserNav} />
         <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>
         <Stack.Screen name="login" component={Login}  options={{ headerShown: false }}/>
-       
         <Stack.Screen name="Maintenance Details" component={MaintenanceDetails} />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
         <Stack.Screen name="All Income" component={AllIncome} />
