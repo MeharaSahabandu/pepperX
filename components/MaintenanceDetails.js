@@ -271,10 +271,6 @@ export default function MaintenanceDetails() {
         </Modal>
         <View style={styles.container}>
           <View style={styles.marginContainer}>
-            <Text style={styles.headerText}>
-              <b>Maintenance</b>
-              <br />
-            </Text>{" "}
             <Picker
               selectedValue={selectedRange}
               onValueChange={(itemValue, itemIndex) =>
