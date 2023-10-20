@@ -13,7 +13,7 @@ export default function LandingPage() {
 
   const handleContinueBtn = () => {
     // Navigate to LandOwnerIncome
-    navigation.navigate("UserNav");
+    navigation.navigate("login");
   };
 
   return (

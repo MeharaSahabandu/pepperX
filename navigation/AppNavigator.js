@@ -17,6 +17,7 @@ import LandOwnerHE from "../components/LandOwnerHE";
 import AllZones from "../components/AllZones";
 import AllExpenditure from "../components/AllExpenditure";
 import BarScreen from "../components/BarScreen";
+import Login from "../components/Login";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,11 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="landingPage">
         <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
+        <Stack.Screen name="Machine Operator" component={MachineOperator} />
+        <Stack.Screen name="Machine Operations" component={MachineOperations} />        
+        <Stack.Screen name="UserNav" component={UserNav} />
+        <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>
+        <Stack.Screen name="login" component={Login}  options={{ headerShown: false }}/>
         <Stack.Screen name="Plantation Details" component={PlantationDetails} />
         <Stack.Screen name="Maintenance Details" component={MaintenanceDetails} />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
@@ -33,13 +39,9 @@ function AppNavigator() {
         <Stack.Screen name="All Zones" component={AllZones} />
         <Stack.Screen name="LandOwner" component={LandOwner} />
         <Stack.Screen name="LandOwnerHI" component={LandOwnerHI} />
-        <Stack.Screen name="ManagerHome" component={ManagerHome} />
-        <Stack.Screen name="Machine Operator" component={MachineOperator} />
-        <Stack.Screen name="Machine Operations" component={MachineOperations} />
         <Stack.Screen name="LandOwnerHE" component={LandOwnerHE} />
+        <Stack.Screen name="ManagerHome" component={ManagerHome} />
         <Stack.Screen name="PlantationDataList" component={PlantationDataList} />
-        <Stack.Screen name="landingPage" component={LandingPage} />
-        <Stack.Screen name="UserNav" component={UserNav} />
       </Stack.Navigator>
     </NavigationContainer>
   );
