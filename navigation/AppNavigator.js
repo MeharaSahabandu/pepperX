@@ -26,16 +26,17 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ManagerHome" component={ManagerHome} />
-        <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
-        <Stack.Screen name="Machine Operator" component={MachineOperator} />
-        <Stack.Screen name="Machine Operations" component={MachineOperations} />
-        <Stack.Screen name="UserNav" component={UserNav} />
         <Stack.Screen
           name="landingPage"
           component={LandingPage}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="ManagerHome" component={ManagerHome} />
+        <Stack.Screen name="Supervisor Home" component={SupervisorHome} />
+        <Stack.Screen name="Machine Operator" component={MachineOperator} />
+        <Stack.Screen name="Machine Operations" component={MachineOperations} />
+        <Stack.Screen name="UserNav" component={UserNav} />
+
         <Stack.Screen
           name="login"
           component={Login}
@@ -49,7 +50,7 @@ function AppNavigator() {
         <Stack.Screen name="Plantation Details" component={PlantationDetails} />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
         <Stack.Screen name="All Income" component={AllIncome} />
-        <Stack.Screen name="BarScreen" component={BarScreen} />
+        <Stack.Screen name="Finance Balance" component={BarScreen} />
         <Stack.Screen name="All Zones" component={AllZones} />
         <Stack.Screen
           name="PlantationDataList"

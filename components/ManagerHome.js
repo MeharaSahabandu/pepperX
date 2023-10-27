@@ -66,7 +66,7 @@ export default function ManagerHome() {
         </Animatable.View> */}
         <Animatable.View animation="slideInUp" duration={1500}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("BarScreen")}
+            onPress={() => navigation.navigate("Finance Balance")}
           >
             <View style={styles.rectangle}>
               <Image

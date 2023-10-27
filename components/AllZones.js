@@ -54,19 +54,20 @@ export default function AllZones() {
 
     let totalExpenditure = 0;
 
-    for (const expenditureQuery of expenditureQueries) {
-      try {
+    try {
+      for (const expenditureQuery of expenditureQueries) {
         const querySnapshot = await getDocs(expenditureQuery);
         querySnapshot.forEach((doc) => {
           const { expense, wages, other, otherEx } = doc.data();
-          totalExpenditure += expense + wages + other + otherEx;
+          totalExpenditure +=
+            (expense || 0) + (wages || 0) + (other || 0) + (otherEx || 0);
         });
-      } catch (error) {
-        console.error("Error fetching expenditure data: ", error);
       }
-    }
 
-    setTotalExpenditure(totalExpenditure);
+      setTotalExpenditure(totalExpenditure);
+    } catch (error) {
+      console.error("Error fetching expenditure data: ", error);
+    }
   };
 
   useEffect(() => {
