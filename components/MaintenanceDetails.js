@@ -117,8 +117,8 @@ export default function MaintenanceDetails() {
 
       const data = [];
       querySnapshot.forEach((doc) => {
-        const { wages, otherEx, zone, date } = doc.data();
-        data.push({ wages, otherEx, zone, date });
+        const { wages, other, zone, date } = doc.data();
+        data.push({ wages, other, zone, date });
       });
 
       setMaintenanceData(data);
@@ -209,7 +209,7 @@ export default function MaintenanceDetails() {
                   <Picker.Item key={zone} label={zone} value={zone} />
                 ))}
               </Picker>
-              <br/>
+              <br />
               <TextInput
                 style={styles.input}
                 placeholder="Other Expenditures"
@@ -305,10 +305,10 @@ export default function MaintenanceDetails() {
                 }
               }}
             ></TouchableOpacity>
-                        <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
+            <TouchableOpacity style={styles.addButton} onPress={showAddPopup}>
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
-            <br/>
+            <br />
             <View>
               {maintenanceData.map((item, index) => (
                 <View key={index} style={styles.rectangle}>
@@ -318,7 +318,7 @@ export default function MaintenanceDetails() {
                     </Text>
                     <br />
                     {getMonthName(parseInt(item.date.split("/")[1]))}
-                    <br/>
+                    <br />
                     <Text style={{ fontSize: 11 }}>
                       {item.date.split("/")[0]}
                     </Text>
@@ -351,7 +351,7 @@ export default function MaintenanceDetails() {
                 </View>
               ))}
             </View>
-            </View>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </>

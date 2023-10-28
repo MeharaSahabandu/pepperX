@@ -33,13 +33,25 @@ function AppNavigator() {
         <Stack.Screen name="Machine Expenditure" component={MachineExpenditure} />
         <Stack.Screen name="Machine Operations" component={MachineOperations} />        
         <Stack.Screen name="UserNav" component={UserNav} />
-        <Stack.Screen name="landingPage" component={LandingPage}  options={{ headerShown: false }}/>
-        <Stack.Screen name="login" component={Login}  options={{ headerShown: false }}/>
-        <Stack.Screen name="Maintenance Details" component={MaintenanceDetails} />        <Stack.Screen name="login" component={Login} options={{ headerShown: false }}/>
+        <Stack.Screen
+          name="landingPage"
+          component={LandingPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Maintenance Details"
+          component={MaintenanceDetails}
+        />
         <Stack.Screen name="Plantation Details" component={PlantationDetails} />
         <Stack.Screen name="All Expenditure" component={AllExpenditure} />
         <Stack.Screen name="All Income" component={AllIncome} />
-        <Stack.Screen name="BarScreen" component={BarScreen} />
+        <Stack.Screen name="Finance Balance" component={BarScreen} />
         <Stack.Screen name="All Zones" component={AllZones} />
         <Stack.Screen name="PlantationDataList" component={PlantationDataList}/>
         <Stack.Screen name="Bar Graph" component={BarGraph} />

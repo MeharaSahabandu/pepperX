@@ -151,13 +151,13 @@ export default function PlantationDetails() {
   const [selectedRange, setSelectedRange] = useState("last30");
   useEffect(() => {
     const fetchPlantationData = async () => {
-      const q = query(collection(db, "maintainEx"));
+      const q = query(collection(db, "plantationEx"));
       try {
         const querySnapshot = await getDocs(q);
         const data = [];
         querySnapshot.forEach((doc) => {
-          const { wages, other, zone, date } = doc.data();
-          data.push({ wages, other, zone, date });
+          const { wages, otherEx, zone, date } = doc.data();
+          data.push({ wages, otherEx, zone, date });
         });
 
         const filteredData = filterDataByRange(data, selectedRange);
